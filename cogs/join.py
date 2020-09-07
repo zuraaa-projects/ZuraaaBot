@@ -27,6 +27,7 @@ class Join(Cog):
                 ).set_author(name=member.name, icon_url=member.avatar_url)
                 .set_thumbnail(url=member.avatar_url)
                 .add_field(name="Criação da conta:", value=f"{member.created_at}\n`{(member.joined_at-member.created_at).days}` dias atrás.`")
+                .add_field(name="Posição:", value=f"`#{member.guild.member_count}`")
                 .set_footer(text=f"ID: {member.id}")
             )
         roles_c = self.bot.config["roles"]
