@@ -1,0 +1,21 @@
+{
+    "token": "token de seu bot aqui",
+    "prefixes": ["bpd ", "bpd", "z."],
+    "mongo": {
+        "uri": "mongodb://localhost:27017/zuraaa",
+        "db": "zuraaa"
+    },
+    "roles": {
+        "member": 537423432753872926,
+        "dev": 550562293738373121,
+        "bot": 537404215597858836,
+        "bottest": 752545544362262528
+    },
+    "guilds": {
+        "bottest": 740261062917488660,
+        "main": 528352472389910529
+    },
+    "channels": {
+        "welcome": 537398196507508739
+    }
+}
