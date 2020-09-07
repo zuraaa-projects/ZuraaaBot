@@ -4,7 +4,7 @@ from json import load
 
 config = load(open("config.json"))
 
-bot = Bot(config.prefixes, None)
+bot = Bot(config["prefixes"], None)
 
 COGS = ["join"]
 for cog in COGS:
