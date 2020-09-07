@@ -19,15 +19,15 @@ class Join(Cog):
                 roles.append("member")
                 if self.bot.db.bots.find_one({"$or":[{"owner": str(member.id)}, {"details.otherOwners": str(member.id)}]}, {"_id": 1}):
                     roles.append("dev")
-            member.guild.get_channel(self.bot.config["channels"]["welcome"]).send(
+            await member.guild.get_channel(self.bot.config["channels"]["welcome"]).send(
                 embed=Embed(
                     color=Color.blue(),
                     timestamp=datetime.now(),
                     title="BOT entrou" if member.bot else ""
                 ).set_author(name=member.name, icon_url=member.avatar_url)
-                .set_thumbnail(member.avatar_url)
-                .add_field("Criação da conta:", f"{member.created_at}\n`{(member.joined_at-member.created_at).days}` dias atrás.`")
-                .set_footer(f"ID: {member.id}")
+                .set_thumbnail(url=member.avatar_url)
+                .add_field(name="Criação da conta:", value=f"{member.created_at}\n`{(member.joined_at-member.created_at).days}` dias atrás.`")
+                .set_footer(text=f"ID: {member.id}")
             )
         roles_c = self.bot.config["roles"]
         await member.add_roles(*[roles_c[role] for role in roles])
