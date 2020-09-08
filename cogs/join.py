@@ -10,7 +10,7 @@ class Join(Cog):
     async def on_member_join(self, member: Member):
         guilds = self.bot.config["guilds"]
         roles = []
-        if member.guild.id == guilds["bottest"] and member.bot:916596
+        if member.guild.id == guilds["bottest"] and member.bot:
             roles.append("bottest")
         elif member.guild.id == guilds["main"]:
             if member.bot:
