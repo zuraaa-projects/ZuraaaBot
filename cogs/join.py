@@ -1,3 +1,4 @@
+from datetime import datetime
 from discord.ext.commands import Cog
 from discord import Member, Embed, Color
 
@@ -49,7 +50,7 @@ class Join(Cog):
         await member.guild.get_channel(self.bot.config["channels"]["welcome"]).send(
             embed=Embed(
                 color=Color.blue(),
-                timestamp=member.joined_at,
+                timestamp=datetime.now(),
                 title="BOT saiu" if member.bot else ""
             ).set_author(name=member.name, icon_url=member.avatar_url)
             .set_thumbnail(url=member.avatar_url)
