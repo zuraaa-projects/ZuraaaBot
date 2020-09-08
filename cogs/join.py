@@ -38,7 +38,7 @@ class Join(Cog):
         if not member.bot:
             if bot := self.bot.db.bots.find_one({"$or":[{"owner": str(member.id)}, {"details.otherOwners": str(member.id)}]}, {"_id": 1}):
                 user = False
-                for bot in [*bot["details"].get("otherOwners") or [], bot["owner"]]: 
+                for bot in [*(bot["details"].get("otherOwners") or []), bot["owner"]]: 
                     if await member.guild.fetch_member(x):
                         user = True
                         break
