@@ -1,0 +1,36 @@
+{
+    "bot": {
+        "token": "BotToken",
+        "prefix": "Prefix",
+        "owner": ["OwnerID (WIP)"],
+        "primaryColor": "(WIP)",
+        "guilds": {
+            "main": {
+                "id": "guild",
+                "autorole": {
+                    "botrole": "role for bot",
+                    "member": "role for member",
+                    "dev": "role for dev"
+                },
+                "channels": {
+                    "wellcome": "wellcome channel"
+                }
+            },
+            "bottest": {
+                "id": "guild for bot test",
+                "autorole": {
+                    "botrole": "bot role"
+                }
+            }
+        }
+    },
+
+    "mongo": {
+        "botlist": {
+            "uri": "uri bot list"
+        },
+        "bot": {
+            "uri": "(WIP)"
+        }
+    }
+}

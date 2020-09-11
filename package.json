@@ -1,0 +1,33 @@
+{
+  "name": "zuraaa-bot",
+  "version": "1.0.0",
+  "description": "Bot para bot lists",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuraaa-projects/ZuraaaBot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "botlist",
+    "zuraaa",
+    "bpd",
+    "botsparadiscord"
+  ],
+  "author": "Takasakiii",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zuraaa-projects/ZuraaaBot/issues"
+  },
+  "homepage": "https://github.com/zuraaa-projects/ZuraaaBot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.4"
+  }
+}

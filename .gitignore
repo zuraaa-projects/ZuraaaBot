@@ -1,0 +1,4 @@
+/node_modules
+/.code
+config.json
+yarn.lock
