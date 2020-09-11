@@ -3,7 +3,7 @@ const moment = require("moment");
 const {MessageEmbed} = require("discord.js");
 
 
-client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", async member => {
     const guilds = config.bot.guilds;
 
     if(member.guild.id == guilds.bottest.id)
@@ -14,16 +14,16 @@ client.on("guildMemberAdd", member => {
                 member.roles.add(guilds.main.autorole.botrole);
             else{
                 member.roles.add(guilds.main.autorole.member);
-                if(dbBotList.Bots.findOne({
-                    "$or": [
+                if(await dbBotList.Bots.findOne({
+                    $or: [
                         {
-                            "owner": member.id
+                            owner: member.id
                         },
                         {
                             "details.otherOwners": member.id
                         }
                     ]
-                }))
+                }).exec())
                     member.roles.add(guilds.main.autorole.dev);
             }
 
