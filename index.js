@@ -3,6 +3,7 @@ const fs = require("fs");
 const BotlistDB = require("./utils/database/botlist");
 
 const config = require("./config.json");
+const emoji = require("./emojis.json")
 
 const client = new Discord.Client();
 const dbBotList = new BotlistDB(config);
@@ -27,5 +28,6 @@ client.login(config.bot.token);
 module.exports = {
     client,
     config,
-    dbBotList
+    dbBotList,
+    emoji
 }

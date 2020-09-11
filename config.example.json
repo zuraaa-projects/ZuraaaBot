@@ -13,7 +13,16 @@
                     "dev": "role for dev"
                 },
                 "channels": {
-                    "wellcome": "wellcome channel"
+                    "wellcome": "wellcome channel",
+                    "modlog": "mod logs channel"
+                },
+                "staffroleid": {
+                    "mod": "mod role id",
+                    "adm": "adm role id",
+                    "checker": "checker role id"
+                },
+                "otherroles": {
+                    "mute": "mute role id"
                 }
             },
             "bottest": {
