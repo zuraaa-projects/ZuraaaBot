@@ -1,9 +1,9 @@
-const { config } = require("..");
+const { config, emoji } = require("..");
 
 module.exports = {
     name: 'mute',
     description: 'mute os usuários',
-    async execute(message, args, emoji) {
+    async execute(message, args) {
         if (!message.member.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !message.member.hasPermission('ADMINISTRATOR'))
             return message.react(emoji.error.id)
 

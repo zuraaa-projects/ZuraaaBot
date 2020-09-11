@@ -1,9 +1,10 @@
-const { config } = require("..");
+const { config, emoji } = require("..");
+const {MessageEmbed} = require("discord.js");
 
 module.exports = {
     name: 'unmute',
     description: 'desmute os usuários',
-    async execute(message, args, emoji) {
+    async execute(message, args) {
         if (!message.member.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !message.member.hasPermission('ADMINISTRATOR'))
             return message.react(emoji.error.id)
 
@@ -27,9 +28,7 @@ module.exports = {
                 return console.log(err)
             }).then(() => {
                 message.react(emoji.ok.id)
-
                 const logchannel = message.guild.channels.cache.get(config.bot.guilds.main.channels.modlog),
-                {MessageEmbed} = require("discord.js"),
                     embed = new MessageEmbed()
                         .setDescription(`**${message.author.tag}** desmutou **${member.user.tag}** (${member.id})\n\nMotivo: \`${reason}\``)
                         .setColor('#fcba03')
