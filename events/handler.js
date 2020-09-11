@@ -1,7 +1,6 @@
 const fs = require("fs");
 const {Collection} = require("discord.js");
-const {client, config, emoji} = require("../index");
-const { dir } = require("console");
+const {client, config} = require("../index");
 
 client.commands = new Collection();
 
@@ -24,7 +23,7 @@ client.on("message", message => {
         return;
 
     try{
-        client.commands.get(cmd).execute(message, args, emoji);
+        client.commands.get(cmd).execute(message, args);
     } catch(err){
         console.error(err);
     }
