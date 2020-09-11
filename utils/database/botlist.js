@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const { config } = require('../..');
 
 module.exports = class BotList{
-    constructor(){
+    constructor(config){
         mongoose.connect(config.mongo.botlist.uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
