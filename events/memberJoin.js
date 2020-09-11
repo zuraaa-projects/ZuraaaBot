@@ -6,7 +6,7 @@ const {MessageEmbed} = require("discord.js");
 client.on("guildMemberAdd", async member => {
     const guilds = config.bot.guilds;
 
-    if(member.guild.id == guilds.bottest.id)
+    if(member.guild.id == guilds.bottest.id && member.user.bot)
         member.roles.add(guilds.bottest.autorole.botrole);
     else
         if(member.guild.id == guilds.main.id){

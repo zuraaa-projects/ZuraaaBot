@@ -3,7 +3,7 @@
         "token": "BotToken",
         "prefix": "Prefix",
         "owner": ["OwnerID (WIP)"],
-        "primaryColor": "(WIP)",
+        "primaryColor": "color for embeds",
         "guilds": {
             "main": {
                 "id": "guild",

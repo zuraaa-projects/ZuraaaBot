@@ -20,10 +20,18 @@ module.exports = class BotList{
                 type: String
             },
             details: {
+                prefix: String,
+                library: String,
+                tags: Array,
+                shortDescription: String,
                 otherOwners: [{
                     ref: "users",
                     type: String
-                }]
+                }],
+                customURL: String
+            },
+            votes: {
+                current: Number
             }
         }));
     }
