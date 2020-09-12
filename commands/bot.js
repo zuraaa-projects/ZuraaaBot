@@ -32,23 +32,23 @@ module.exports= {
             let botowner = `\`${(await client.users.fetch(bot.owner)).tag}\``;
 
             for(const ownerid of bot.details.otherOwners){
-                if(ownerid)
-                    botowner += ` \`${(await client.users.fetch(ownerid)).tag}\``
+                botowner += ` \`${(await client.users.fetch(ownerid)).tag}\``
             }
             msg.channel.send(new MessageEmbed()
                 .setColor(config.bot.primaryColor)
                 .setThumbnail(botd.displayAvatarURL())
                 .setTitle(botd.tag)
                 .setURL("https://zuraaa.com/bots/" + botd.id)
-                .addField("Dono(s):", botowner, true)
                 .setDescription(bot.details.shortDescription)
-                .addField("Votos:", bot.votes.current, true)
-                .addField("Prefixo:", "`" + bot.details.prefix + "`", true)
-                .addField("Biblioteca:", bot.details.library, true)
-                .addField("Tags:", convertTags(bot.details.tags).join("\n"), true)
-                .addField("Links:", `[Votar](https://zuraaa.com/bots/${botd.id}/votar)\n[Adicionar](https://zuraaa.com/bots/${botd.id}/add)`, true)
+                .addFields(
+                    { name: "Dono(s):", value: `${botowner}`, inline: true },
+                    { name: "Votos:", value: `${bot.votes.current}`, inline: true },
+                    { name: "Prefixo:", value: "`" + bot.details.prefix + "`", inline: true },
+                    { name: "Biblioteca:", value: `${bot.details.library}`, inline: true },
+                    { name: "Tags:", value: `${convertTags(bot.details.tags).join("\n")}`, inline: true },
+                    { name: "Links:", value: `[Votar](https://zuraaa.com/bots/${botd.id}/votar)\n[Adicionar](https://zuraaa.com/bots/${botd.id}/add)`, inline: true }
+                )
             )
         })
-
     }
 }
