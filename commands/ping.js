@@ -1,3 +1,5 @@
+const {client} = require("..");
+
 module.exports = {
 	name: 'ping',
 	description: 'Ping!',
