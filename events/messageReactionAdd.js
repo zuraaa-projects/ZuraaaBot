@@ -5,7 +5,7 @@ client.on("messageReactionAdd", (msgreaction, user) => {
     if(msgreaction.message.channel.id == config.bot.guilds.main.channels.starboard)
         return;
     
-    if(msgreaction.emoji.equals("⭐") && msgreaction.count >= 5){
+    if(msgreaction.emoji == "⭐" && msgreaction.count >= 1){
         const channel = msgreaction.message.guild.channels.cache.get(config.bot.guilds.main.channels.starboard);
         
         const starmsg = new MessageEmbed()
