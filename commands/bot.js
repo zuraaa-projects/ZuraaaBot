@@ -32,7 +32,8 @@ module.exports= {
             let botowner = `\`${(await client.users.fetch(bot.owner)).tag}\``;
 
             for(const ownerid of bot.details.otherOwners){
-                botowner += ` \`${(await client.users.fetch(ownerid)).tag}\``
+                if(botowner)
+                    botowner += ` \`${(await client.users.fetch(ownerid)).tag}\``
             }
             msg.channel.send(new MessageEmbed()
                 .setColor(config.bot.primaryColor)

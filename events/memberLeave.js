@@ -1,7 +1,9 @@
 const {client, config, dbBotList} = require("..");
 const {MessageEmbed} = require("discord.js");
+const modlog = require("../utils/modlog")
 
 client.on("guildMemberRemove", async (member) => {
+    modlog(member.guild);
     const guilds = config.bot.guilds;
 
     if(member.guild.id != guilds.main.id)
@@ -38,6 +40,5 @@ client.on("guildMemberRemove", async (member) => {
         .addField("Membros:", "`#" + member.guild.memberCount + "`", true)
         .addField("Bot:", (member.user.bot) ? "Sim" : "Não", true)
     );
-    
 
 })
