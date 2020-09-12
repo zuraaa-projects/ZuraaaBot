@@ -15,7 +15,7 @@ module.exports= {
         if(!bsearch){
             msg.channel.send(new MessageEmbed()
                 .setColor("RED")
-                .setTitle("Você precisa mensionar o bot ou mandar sua id.")
+                .setTitle("Você precisa mencionar um bot ou mandar o ID de um.")
             )
             return;
         }
@@ -24,7 +24,7 @@ module.exports= {
             if(!bot){
                 msg.channel.send(new MessageEmbed()
                     .setColor("RED")
-                    .setTitle("Bot não encontrado.")
+                    .setTitle("O bot não foi encontrado.")
                 )
                 return;
             }
