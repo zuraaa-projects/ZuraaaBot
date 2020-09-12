@@ -14,7 +14,8 @@
                 },
                 "channels": {
                     "wellcome": "wellcome channel",
-                    "modlog": "mod logs channel"
+                    "modlog": "mod logs channel",
+                    "suggestion": "channel of suggestion"
                 },
                 "staffroleid": {
                     "mod": "mod role id",
