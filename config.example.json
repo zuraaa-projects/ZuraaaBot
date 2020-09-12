@@ -15,7 +15,8 @@
                 "channels": {
                     "wellcome": "wellcome channel",
                     "modlog": "mod logs channel",
-                    "suggestion": "channel of suggestion"
+                    "suggestion": "channel of suggestion",
+                    "starboard": "channel of starboard"
                 },
                 "staffroleid": {
                     "mod": "mod role id",
