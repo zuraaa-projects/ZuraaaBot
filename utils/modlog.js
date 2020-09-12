@@ -31,7 +31,7 @@ module.exports = async (guild) => {
         if(type){
             const channel = guild.channels.cache.get(config.bot.guilds.main.channels.modlog) 
             channel.send(new MessageEmbed()
-                .setDescription("Motivo: `" + audict.reason ? audict.reason : "Sem motivo informado." + "`")
+                .setDescription(`Motivo: \`${ audict.reason ? audict.reason : "Sem motivo informado."}\``)
                 .setTitle(`${audict.executor.tag} ${type} ${audict.target.tag} (${audict.target.id})`)
                 .setColor(config.bot.primaryColor)
             );
