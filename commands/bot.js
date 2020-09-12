@@ -32,7 +32,7 @@ module.exports= {
             let botowner = `\`${(await client.users.fetch(bot.owner)).tag}\``;
 
             for(const ownerid of bot.details.otherOwners){
-                if(botowner)
+                if(ownerid)
                     botowner += ` \`${(await client.users.fetch(ownerid)).tag}\``
             }
             msg.channel.send(new MessageEmbed()
