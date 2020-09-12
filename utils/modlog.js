@@ -14,9 +14,6 @@ module.exports = async (guild) => {
 
         const audict = audictlist.entries.first();
 
-        if(audict.executor.id == client.user.id)
-            return;
-
         let type = "";
 
         switch(audict.action){
