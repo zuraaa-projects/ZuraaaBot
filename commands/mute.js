@@ -32,7 +32,7 @@ module.exports = {
                 {MessageEmbed} = require("discord.js"),
                     embed = new MessageEmbed()
                         .setDescription(`**${message.author.tag}** mutou **${member.user.tag}** (${member.id})\n\nMotivo: \`${reason}\``)
-                        .setColor('#fcba03')
+                        .setColor(config.bot.primaryColor)
                 logchannel.send(embed)
             })
         }

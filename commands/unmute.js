@@ -31,7 +31,7 @@ module.exports = {
                 const logchannel = message.guild.channels.cache.get(config.bot.guilds.main.channels.modlog),
                     embed = new MessageEmbed()
                         .setDescription(`**${message.author.tag}** desmutou **${member.user.tag}** (${member.id})\n\nMotivo: \`${reason}\``)
-                        .setColor('#fcba03')
+                        .setColor(config.bot.primaryColor)
                 logchannel.send(embed)
             })
         }
