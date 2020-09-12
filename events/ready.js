@@ -10,5 +10,5 @@ client.on("ready", () => {
 
 async function setStatus(){
     const botsCount = await dbBotList.Bots.countDocuments().exec();
-    client.user.setActivity("todos os " + botsCount + " bots que estão na botlist 😋", {type: "WATCHING"})
+    client.user.setActivity("Todos os " + botsCount + " bots que estão na botlist 😋", {type: "WATCHING"})
 }

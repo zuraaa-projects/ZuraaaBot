@@ -1,4 +1,4 @@
-const {client, config, dbBotList} = require("../index");
+const {client, config, dbBotList} = require("..");
 const {MessageEmbed} = require("discord.js");
 
 client.on("guildMemberRemove", async (member) => {

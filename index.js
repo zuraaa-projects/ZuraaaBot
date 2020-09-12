@@ -22,7 +22,6 @@ fs.readdir("./events/", (err, files) => {
 });
 
 
-
 client.login(config.bot.token);
 
 module.exports = {
