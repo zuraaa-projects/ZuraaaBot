@@ -13,7 +13,7 @@ client.on("messageReactionAdd", (msgreaction, user) => {
             .setColor(config.bot.primaryColor)
             .setTitle(`⭐${msgreaction.message.member.user.tag}⭐`)
             .setDescription(`[Ver mensagem](${msgreaction.message.url})\n\n${msgreaction.message.content}`)
-            .setThumbnail(user.displayAvatarURL({
+            .setThumbnail(msgreaction.message.member.user.displayAvatarURL({
                 dynamic: true
             }))
             .setTimestamp(msgreaction.message.createdAt)
