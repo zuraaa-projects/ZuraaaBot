@@ -6,7 +6,7 @@ client.on("messageReactionAdd", (msgreaction, user) => {
         return;
     
     console.log(msgreaction.emoji.name);
-    if(msgreaction.emoji.name == "⭐" && msgreaction.count >= 9999999){
+    if(msgreaction.emoji.name == "⭐" && msgreaction.count >= 1 && !msgreaction.message.reactions.cache.has("🌟")){
         const channel = msgreaction.message.guild.channels.cache.get(config.bot.guilds.main.channels.starboard);
         console.log("entrou");
         const starmsg = new MessageEmbed()
@@ -27,5 +27,6 @@ client.on("messageReactionAdd", (msgreaction, user) => {
         }
         
         channel.send(starmsg);
+        msgreaction.message.react("🌟");
     }
 });
