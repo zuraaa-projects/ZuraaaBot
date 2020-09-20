@@ -4,7 +4,7 @@ module.exports = {
     name: 'mute',
     description: 'mute os usuários',
     async execute(message, args) {
-        if (!message.member.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !message.member.hasPermission('ADMINISTRATOR'))
+        if (!message.member.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !message.member.roles.cache.has(config.bot.guilds.main.staffroleid.checker) && !message.member.hasPermission('ADMINISTRATOR'))
             return message.react(emoji.error.id)
 
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0])
