@@ -1,6 +1,6 @@
 # Zuraaa! Bot
 
-Bot responsavel por organizar e auxiliar na botlist [Zuraaa](https://github.com/zuraaa-projects/Zuraaa.com)
+Bot responsável por organizar e auxiliar na botlist [Zuraaa](https://github.com/zuraaa-projects/Zuraaa.com)
 
 ## Agradecimentos:
 
@@ -10,12 +10,12 @@ Bot responsavel por organizar e auxiliar na botlist [Zuraaa](https://github.com/
 
 ## Como usar:
 
-- Primeiro clone o repositorio:
+- Primeiro clone o repositório:
 ```sh
 $ git clone https://github.com/zuraaa-projects/ZuraaaBot.git
 ```
 
-- Inicialize as dependencias: 
+- Inicialize as dependências: 
 ```sh
 $ npm i
 ```
@@ -27,7 +27,7 @@ $ npm start
 ```
 
 #### Suporte:
-- Suporte feito atravez do nosso [Discord](https://discord.gg/t5qzWQB)
+- Suporte feito através do nosso [Discord](https://discord.gg/t5qzWQB)
 
 #### Fair Use:
 - Fica livre o uso desse software bem como modificações no mesmo desde que dentro da licença GPL v3.0.
