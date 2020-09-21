@@ -18,6 +18,7 @@ module.exports = class BotList{
                 ref: "users",
                 type: String
             },
+            approvedBy: String,
             details: {
                 prefix: String,
                 library: String,

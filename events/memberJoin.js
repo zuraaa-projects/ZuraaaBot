@@ -14,7 +14,7 @@ client.on("guildMemberAdd", async member => {
                 member.roles.add(guilds.main.autorole.botrole);
             else{
                 member.roles.add(guilds.main.autorole.member);
-                if(await dbBotList.Bots.findOne({
+                const user = await dbBotList.Bots.findOne({
                     $or: [
                         {
                             owner: member.id
@@ -23,7 +23,8 @@ client.on("guildMemberAdd", async member => {
                             "details.otherOwners": member.id
                         }
                     ]
-                }).exec())
+                }).exec()
+                if(user && user.approvedBy)       
                     member.roles.add(guilds.main.autorole.dev);
             }
 
