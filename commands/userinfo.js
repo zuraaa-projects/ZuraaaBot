@@ -21,6 +21,7 @@ module.exports = {
                     dynamic: true
                 }))
                 .setFooter('ID: ' + user.id)
+                .setURL(`https://zuraaa.com/user/${user.id}`)
 
 
                 dbBotList.Bots.find({   
