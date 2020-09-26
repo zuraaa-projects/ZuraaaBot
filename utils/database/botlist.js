@@ -9,11 +9,16 @@ module.exports = class BotList{
         }).catch(console.log);
 
         this.Users = mongoose.model('users', new mongoose.Schema({
-            _id: String
+            _id: String,
+            details: {
+                description: String
+            }
         }));
 
         this.Bots = mongoose.model('bots', new mongoose.Schema({
             _id: String,
+            username: String,
+            discriminator: String,
             owner: {
                 ref: "users",
                 type: String
