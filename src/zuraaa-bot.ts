@@ -1,7 +1,7 @@
 import config from './config.json'
 import Discord from 'discord.js'
 import {Handler} from './modules/handler'
-import {createConnection, getRepository} from 'typeorm'
+import {createConnection} from 'typeorm'
 
 
 class ZuraaaBot{
