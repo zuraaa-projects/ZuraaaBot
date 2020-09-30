@@ -1,0 +1,20 @@
+{
+    "type": "mongodb",
+    "useUnifiedTopology": true,
+    "host": "localhost",
+    "port": 27017,
+    "username": "",
+    "password": "",
+    "database": "zuraaa",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+       "src/database/entity/**/*.ts"
+    ],
+    "migrations": [
+       "src/database/migration/**/*.ts"
+    ],
+    "subscribers": [
+       "src/database/subscriber/**/*.ts"
+    ]
+ }

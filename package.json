@@ -28,7 +28,9 @@
     "discord.js": "^12.3.1",
     "glob": "^7.1.6",
     "moment": "^2.27.0",
-    "mongoose": "^5.10.4"
+    "mongodb": "^3.6.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.27"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",

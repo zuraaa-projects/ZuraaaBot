@@ -1,4 +1,5 @@
 import ZuraaaBot from './zuraaa-bot'
+import 'reflect-metadata'
 
 const zuraaaBot = new ZuraaaBot()
 zuraaaBot.start()

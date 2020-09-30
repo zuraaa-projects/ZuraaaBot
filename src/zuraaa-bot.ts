@@ -1,6 +1,7 @@
 import config from './config.json'
 import Discord from 'discord.js'
 import {Handler} from './modules/handler'
+import {createConnection, getRepository} from 'typeorm'
 
 
 class ZuraaaBot{
@@ -16,8 +17,10 @@ class ZuraaaBot{
     }
 
     start(){
-        this._handler.build()
-        this._client.login(config.bot.token)
+        createConnection().then(conn => {
+            this._handler.build()
+            this._client.login(config.bot.token)
+        })
     }
 
     

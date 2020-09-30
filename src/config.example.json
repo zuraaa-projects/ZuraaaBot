@@ -34,14 +34,5 @@
                 }
             }
         }
-    },
-
-    "mongo": {
-        "botlist": {
-            "uri": "uri bot list"
-        },
-        "bot": {
-            "uri": "(WIP)"
-        }
     }
 }
