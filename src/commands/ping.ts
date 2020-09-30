@@ -1,14 +1,9 @@
-import { Command, ICommandData } from '../modules/handler'
+import { Command } from '../modules/handler'
 import { getMongoRepository } from 'typeorm'
-import Users from '../database/entity/users'
-import Bots from '../database/entity/bots'
+import Bots from '../modules/database/entity/bots'
 
 class Ping extends Command{
-    info: ICommandData = {
-        name: 'test',
-        description: 'oi',
-        visible: true
-    }
+    name = 'test'
 
     execute(){
         const repo = getMongoRepository(Bots)

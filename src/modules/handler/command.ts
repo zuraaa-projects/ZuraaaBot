@@ -4,8 +4,11 @@ import ICommandData from './icommand-data'
 abstract class Command{
     msg!: Message
     args!: string[]
-
-    abstract info: ICommandData
+    abstract name: string
+    info: ICommandData = {
+        description: '',
+        visible: true
+    }
 
     abstract execute(): void
 }

@@ -44,7 +44,7 @@ class Handler{
         }, (err, files) => {
             for(const file of files){
                 const cmd = require(file).default as Command
-                this._commands.set(cmd.info.name, cmd)
+                this._commands.set(cmd.name, cmd)
             }
         })
     }
