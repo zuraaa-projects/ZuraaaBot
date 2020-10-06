@@ -26,3 +26,5 @@ class Ban extends Command {
 
     }
 }
+
+export default new Ban()

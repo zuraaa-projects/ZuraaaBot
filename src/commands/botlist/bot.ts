@@ -76,5 +76,8 @@ class Bot extends Command{
                         }
                     ]))
             })
+        })
     }
 }
+
+export default new Bot()
