@@ -1,7 +1,4 @@
-
-import { type } from 'os'
-import { Column, Entity, ObjectIdColumn, OneToMany } from 'typeorm'
-import Bots from './bots'
+import { Column, Entity, ObjectIdColumn } from 'typeorm'
 import UserDetails from './subentitys/user-details'
 
 @Entity({

@@ -1,5 +1,9 @@
-module.exports = () => {
-    const tags = {
+interface IBaseTags{
+    [index: string]: string
+}
+
+class Tags{
+    itemTags = {
         anime: "Anime",
         dashboard: "Dashboard",
         diversao: "Diversão",
@@ -15,21 +19,19 @@ module.exports = () => {
         hytale: "Hytale",
         nsfw: "NSFW",
         outros: "Outros"
-    };
-    /**
-     * 
-     * @param {String[]} tagArray
-     * @returns {String[]}
-     */
-    function convertTags(tagArray){
-        for(let i = 0; i < tagArray.length; i++){
-            tagArray[i] = tags[tagArray[i]];
-        }
-        return tagArray;
-    }
+    } as IBaseTags
 
-    return {
-        tags,
-        convertTags
+    convertTags(tags: string[]){
+        for(let i = 0; i < tags.length; i++){
+            tags[i] = this.itemTags[tags[i]]
+        }
+        return tags
     }
 }
+
+export {
+    IBaseTags,
+    Tags
+}
+
+export default Tags
