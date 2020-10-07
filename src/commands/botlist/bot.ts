@@ -35,7 +35,7 @@ class Bot extends Command{
             _id: bsearch
         }).then(botsfinded => {
             if(botsfinded.length  == 0)
-                this.msg.channel.send(new MessageEmbed()
+                return this.msg.channel.send(new MessageEmbed()
                     .setColor('RED')
                     .setTitle('O bot não pode ser encontrado.')
                 )
