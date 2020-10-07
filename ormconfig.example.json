@@ -9,12 +9,12 @@
     "synchronize": false,
     "logging": false,
     "entities": [
-       "src/database/entity/**/*.ts"
+       "src/modules/database/entity/**/*.ts"
     ],
     "migrations": [
-       "src/database/migration/**/*.ts"
+       "src/modules/database/migration/**/*.ts"
     ],
     "subscribers": [
-       "src/database/subscriber/**/*.ts"
+       "src/modules/database/subscriber/**/*.ts"
     ]
  }

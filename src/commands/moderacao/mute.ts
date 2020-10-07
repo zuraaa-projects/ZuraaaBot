@@ -6,6 +6,16 @@ import { Command } from '../../modules/handler'
 class Mute extends Command {
     name = 'mute'
 
+    constructor(){
+        super()
+        this.info = {
+            description: 'Impede um usuario mandar mensagem no servidor.',
+            module: 'Moderação',
+            usage: ['@user', '{id}'],
+            visible: true
+        }
+    }
+
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.checker) && !this.msg.member?.hasPermission('ADMINISTRATOR'))
             return this.msg.react(emojis.error.id)

@@ -6,6 +6,16 @@ import { Command } from '../../modules/handler'
 class Ban extends Command {
     name = 'ban'
 
+    constructor(){
+        super()
+        this.info = {
+            visible: true,
+            description: 'Bane um membro.',
+            module: 'Moderação',
+            usage: ['@user', '{id}'] 
+        }
+    }
+
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.hasPermission('ADMINISTRATOR'))
             return this.msg.react(emojis.error.id)

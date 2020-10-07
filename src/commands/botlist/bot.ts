@@ -9,6 +9,16 @@ import Tags from '../../modules/utils/botlist/tags'
 class Bot extends Command{
     name = 'bot'
 
+    constructor(){
+        super()
+        this.info = {
+            description: 'Mostra informação sobre um bot da botlist.',
+            module: 'BotList',
+            usage: ['@bot', '{id}'],
+            visible: true
+        }
+    }
+
     execute(){
         const mentionedBot = this.msg.mentions.members?.first()
         const bsearch = (mentionedBot) ? mentionedBot.id : this.args[0]

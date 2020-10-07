@@ -7,6 +7,16 @@ import { MessageEmbed } from 'discord.js'
 class Kick extends Command{
     name = 'kick'
 
+    constructor(){
+        super()
+        this.info = {
+            description: 'Expulsa um membro do servidor.',
+            module: 'Moderação',
+            usage: ['@user', '{id}'],
+            visible: true
+        }
+    }
+
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.hasPermission('ADMINISTRATOR'))
             return this.msg.react(emojis.error.id)

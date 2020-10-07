@@ -6,8 +6,10 @@ abstract class Command{
     args!: string[]
     abstract name: string
     info: ICommandData = {
-        description: '',
-        visible: true
+        description: 'Sem descrição informada.',
+        visible: true,
+        module: 'Default',
+        usage: ['']
     }
 
     abstract execute(): void

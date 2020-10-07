@@ -16,6 +16,10 @@ class ZuraaaBot{
         return this._client
     }
 
+    get handler(){
+        return this._handler
+    }
+
     start(){
         createConnection().then(conn => {
             this._handler.build()

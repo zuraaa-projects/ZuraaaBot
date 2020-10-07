@@ -33,6 +33,10 @@ class Handler{
         })
     }
 
+    get commands(){
+        return this._commands
+    }
+
     build(){
         this.registreCommands()
         this.registreEvents()
@@ -42,10 +46,16 @@ class Handler{
         glob('./src/commands/**/*.ts', {
             absolute: true
         }, (err, files) => {
+            console.log('Serão carregado: ' + files.length + ' comandos!')
+            let index = 0
             for(const file of files){
                 const cmd = require(file).default as Command
                 this._commands.set(cmd.name, cmd)
+                console.log((index + 1) + ': ' + file + ' carregado.')
+                index++
             }
+
+            console.log('\n')
         })
     }
 
@@ -62,6 +72,7 @@ class Handler{
                 require(file)
                 console.log((index + 1) + ': ' + file + ' carregado.')
             })
+            console.log('\n')
         })
     }
 }

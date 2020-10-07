@@ -8,6 +8,16 @@ import emojis from '../../emojis.json'
 class UserInfo extends Command {
     name = 'userinfo'
 
+    constructor(){
+        super()
+        this.info = {
+            description: 'Mostra as informações de um usuario da botlist.',
+            module: 'BotList',
+            usage: ['', '@user', '{id}'],
+            visible: true
+        }
+    }
+
     execute(){
         const mentionedUser = this.msg.mentions.users.first()
         const userch = (mentionedUser) ? mentionedUser.id : (this.args[0]) ? this.args[0] : this.msg.author.id
