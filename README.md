@@ -20,7 +20,7 @@ $ git clone https://github.com/zuraaa-projects/ZuraaaBot.git
 $ npm i
 ```
 
-- Preencha o arquivo `config.example.json` e renomeie para `config.json`
+- Preencha os arquivos `src/config.example.json` e `ormconfig.example.json` , e por fim renomeie os mesmos para `src/config.json` e `ormconfig.json`
 - Por fim inicie o projeto
 ```sh
 $ npm start
