@@ -12,7 +12,7 @@ function starboard(reaction: MessageReaction){
     if(!reaction.count)
         return
     
-    if(reaction.emoji.name == '⭐'&& reaction.count >= 5 && !reaction.message.reactions.cache.has('🌟')){
+    if(reaction.emoji.name == '⭐'&& reaction.count >= 5 && !reaction.message.reactions.cache.get('🌟')?.users.cache.has(zuraaa.client.user!.id)){
         const channel = reaction
             .message
             .guild
