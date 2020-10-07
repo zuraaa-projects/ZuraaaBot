@@ -45,7 +45,6 @@ function memberLog(member: GuildMember){
     if(member.guild.id == config.bot.guilds.main.id)
         return
     const channel = member.guild.channels.cache.get(config.bot.guilds.main.channels.wellcome) as TextChannel
-    console.log(channel)
     moment.locale('pt-br')
     const createdAt = moment(member.user.createdTimestamp)
     channel.send(new MessageEmbed()
