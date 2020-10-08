@@ -42,7 +42,7 @@ function autoRole(member: GuildMember){
 }
 
 function memberLog(member: GuildMember){
-    if(member.guild.id == config.bot.guilds.main.id)
+    if(member.guild.id != config.bot.guilds.main.id)
         return
     const channel = member.guild.channels.cache.get(config.bot.guilds.main.channels.wellcome) as TextChannel
     moment.locale('pt-br')
