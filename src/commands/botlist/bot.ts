@@ -44,7 +44,7 @@ class Bot extends Command{
                 let botowner = '`' + (await zuraaa.client.users.fetch(botsfinded[0].owner)).tag + '`'
                 for (const ownerid of botsfinded[0].details.otherOwners)
                     if(ownerid)
-                        botowner += '`' + (await zuraaa.client.users.fetch(ownerid)).tag + '`'
+                        botowner += '\n`' + (await zuraaa.client.users.fetch(ownerid)).tag + '`'
                 
                 const tags = new Tags()
                 this.msg.channel.send(new MessageEmbed()
