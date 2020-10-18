@@ -3,6 +3,7 @@ import { Command } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
 import { MessageEmbed } from 'discord.js'
+import config from '../../config.json'
 
 class RemoveBot extends Command{
     name = 'removebot'
@@ -18,7 +19,7 @@ class RemoveBot extends Command{
     }
 
     execute(){
-        if(!this.msg.member?.hasPermission('ADMINISTRATOR'))
+        if(!this.msg.member?.hasPermission('ADMINISTRATOR') && !this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod))
             return this.msg.react(emojis.error.id)
         
         const botId = this.msg.mentions.users.first()?.id || this.args[0]
