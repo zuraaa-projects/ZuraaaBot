@@ -8,7 +8,7 @@ zuraaa.client.on('message', msg => {
 })
 
 function reactSuggestion(msg: Message){
-    if(msg.channel.id == config.bot.guilds.main.channels.suggestion){
+    if(config.bot.guilds.main.channels.upDownChannels.findIndex(x => x == msg.channel.id) != -1){
         if(msg.content.startsWith('>'))
             return
         msg.react('👍')

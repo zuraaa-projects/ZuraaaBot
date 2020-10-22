@@ -15,7 +15,7 @@
                 "channels": {
                     "wellcome": "wellcome channel",
                     "modlog": "mod logs channel",
-                    "suggestion": "channel of suggestion",
+                    "upDownChannels": ["channel of suggestion", "another channel with this feature."],
                     "starboard": "channel of starboard"
                 },
                 "staffroleid": {
