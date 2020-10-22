@@ -28,10 +28,8 @@ function starboard(reaction: MessageReaction){
             }))
             .setTimestamp(reaction.message.createdAt)
         const image = reaction.message.attachments.first()
-        if(image){
-            if(new RegExp("(.jpg|.gif|.png|.JPG|.PNG|.GIF|.JPEG)").test(image.url))
-                starmsg.setImage(image.url)
-        }
+        if(image)
+            starmsg.setImage(image.url)
         
         channel.send(starmsg)
         reaction.message.react('🌟')
