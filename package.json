@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/zuraaa-projects/ZuraaaBot#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "discord.js": "^12.3.1",
     "glob": "^7.1.6",
     "moment": "^2.27.0",
