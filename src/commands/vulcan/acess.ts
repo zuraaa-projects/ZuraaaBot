@@ -26,7 +26,7 @@ class Acess extends Command{
             this.msg.channel.send(new MessageEmbed()
                 .setColor('#32a852')
                 .setTitle('foi')
-                .setDescription(stout)
+                .setDescription(stout.substring(0, 2000))
             )
         })
 
