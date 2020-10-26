@@ -1,22 +1,17 @@
 import { MessageEmbed } from 'discord.js'
-import config from '../../config.json'
-import { BaseCommand, Command } from '../../modules/handler'
+import config from '../../../config.json'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
-import emojis from '../../emojis.json'
+import emojis from '../../../emojis.json'
 
 @Command('userinfo', 'uinfo', 'userbots')
+@HelpInfo({
+    description: 'Mostra as informações de um usuario da botlist.',
+    module: 'BotList',
+    usage: ['', '@user', '{id}']
+})
 class UserInfo extends BaseCommand {
-    constructor(){
-        super()
-        this.info = {
-            description: 'Mostra as informações de um usuario da botlist.',
-            module: 'BotList',
-            usage: ['', '@user', '{id}'],
-            visible: true
-        }
-    }
-
     execute(){
         const mentionedUser = this.msg.mentions.users.first()
         const userch = (mentionedUser) ? mentionedUser.id : (this.args[0]) ? this.args[0] : this.msg.author.id

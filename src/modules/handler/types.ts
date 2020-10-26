@@ -5,22 +5,16 @@ export interface CommandData{
     cmdClass: any
 }
 
-export interface ICommandData{
-    description: string
-    visible: boolean,
-    module: string,
-    usage: string[]
+export class HelpData{
+    description?: string
+    visible?: boolean
+    module?: string
+    usage?: string[]
 }
 
 export abstract class BaseCommand{
     msg!: Message
     args!: string[]
-    info: ICommandData = {
-        description: 'Sem descrição informada.',
-        visible: true,
-        module: 'Default',
-        usage: ['']
-    }
 
     abstract execute(): void
 }

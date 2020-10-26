@@ -1,7 +1,7 @@
 import zuraaa from '../../../'
 import {GuildMember, MessageEmbed, TextChannel} from 'discord.js'
 import modlogs from '../../../modules/utils/bot/modlogs'
-import config from '../../../config.json'
+import config from '../../../../config.json'
 import {getMongoRepository} from 'typeorm'
 import Bots from '../../../modules/database/entity/bots'
 

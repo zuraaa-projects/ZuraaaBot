@@ -1,15 +1,13 @@
-import { BaseCommand, Command } from "../../modules/handler";
+import { BaseCommand, Command, HelpInfo } from "../../modules/handler";
 
 import axios from 'axios'
 import fs from 'fs'
 
 @Command('download')
+@HelpInfo({
+    visible: false
+})
 class Download extends BaseCommand{
-    constructor(){
-        super()
-        this.info.visible = false
-    }
-
     async execute(){
         if(this.msg.author.id != '203713369927057408' && this.msg.author.id != '274289097689006080')
             return

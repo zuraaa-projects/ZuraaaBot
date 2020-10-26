@@ -1,21 +1,15 @@
 import { MessageEmbed, TextChannel } from 'discord.js'
-import config from '../../config.json'
-import emojis from '../../emojis.json'
-import { BaseCommand, Command } from '../../modules/handler'
+import config from '../../../config.json'
+import emojis from '../../../emojis.json'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 
 @Command('unmute')
+@HelpInfo({
+    description: 'Desmuta um membro do servidor.',
+    module: 'Moderação',
+    usage: ['@user', '{id}'],
+})
 class UnMute extends BaseCommand{
-
-    constructor(){
-        super()
-        this.info = {
-            description: 'Desmuta um membro do servidor.',
-            module: 'Moderação',
-            usage: ['@user', '{id}'],
-            visible: true
-        }
-    }
-
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.checker) && !this.msg.member?.hasPermission('ADMINISTRATOR'))
         return this.msg.react(emojis.error.id)

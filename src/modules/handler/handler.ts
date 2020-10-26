@@ -1,7 +1,7 @@
 import glob from 'glob'
 import { BaseCommand, CommandData } from './types'
 import ZuraaaBot from '../../zuraaa-bot'
-import config from '../../config.json'
+import config from '../../../config.json'
 import _ from 'lodash'
 
 class Handler{

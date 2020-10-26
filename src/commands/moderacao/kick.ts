@@ -1,19 +1,15 @@
-import emojis from '../../emojis.json'
-import { BaseCommand, Command } from '../../modules/handler'
-import config from '../../config.json'
+import emojis from '../../../emojis.json'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import config from '../../../config.json'
 import { MessageEmbed } from 'discord.js'
 
 @Command('kick')
+@HelpInfo({
+    description: 'Expulsa um membro do servidor.',
+    module: 'Moderação',
+    usage: ['@user', '{id}'],
+})
 class Kick extends BaseCommand{
-    constructor(){
-        super()
-        this.info = {
-            description: 'Expulsa um membro do servidor.',
-            module: 'Moderação',
-            usage: ['@user', '{id}'],
-            visible: true
-        }
-    }
 
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.hasPermission('ADMINISTRATOR'))

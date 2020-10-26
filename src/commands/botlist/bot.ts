@@ -1,24 +1,19 @@
 import { MessageEmbed } from 'discord.js'
 import zuraaa from '../..'
-import { BaseCommand, Command } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
-import config from '../../config.json'
+import config from '../../../config.json'
 import Tags from '../../modules/utils/botlist/tags'
 
 
 @Command('bot', 'botinfo')
+@HelpInfo({
+    description: 'Mostra informação sobre um bot da botlist.',
+    module: 'BotList',
+    usage: ['@bot', '{id}']
+})
 class Bot extends BaseCommand{
-    constructor(){
-        super()
-        this.info = {
-            description: 'Mostra informação sobre um bot da botlist.',
-            module: 'BotList',
-            usage: ['@bot', '{id}'],
-            visible: true
-        }
-    }
-
     execute(){
         const mentionedBot = this.msg.mentions.members?.first()
         const bsearch = (mentionedBot) ? mentionedBot.id : this.args[0]

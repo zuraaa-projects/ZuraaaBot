@@ -1,12 +1,11 @@
-import { BaseCommand, Command } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 
 @Command('test')
+@HelpInfo({
+    visible: false
+})
 class Test extends BaseCommand {
-    constructor(){
-        super()
-        this.info.visible = false
-    }
-
+    
     execute(){
         this.msg.channel.send(process.memoryUsage().heapUsed /1024 /1024)
     }

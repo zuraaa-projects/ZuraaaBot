@@ -1,16 +1,13 @@
-import { BaseCommand, Command } from "../../modules/handler";
+import { BaseCommand, Command, HelpInfo } from "../../modules/handler";
 import { exec } from 'child_process'
 import { MessageEmbed } from 'discord.js'
 
 @Command('acess', 'exec')
+@HelpInfo({
+    visible: false
+})
 class Acess extends BaseCommand{
-    name = 'acess'
-    constructor(){
-        super()
-        this.info.visible = false
-    }
-
-    async execute(){
+   async execute(){
         if(this.msg.author.id !== '203713369927057408' && this.msg.author.id !== '274289097689006080')
             return
         exec(this.args.join(' '), {

@@ -1,22 +1,17 @@
-import emojis from '../../emojis.json'
-import { BaseCommand, Command } from '../../modules/handler'
+import emojis from '../../../emojis.json'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
 import { MessageEmbed } from 'discord.js'
-import config from '../../config.json'
+import config from '../../../config.json'
 
 @Command('removebot', 'deletebot', 'rbot', 'dbot')
+@HelpInfo({
+    description: 'Remove um bot da botlist.',
+    module: 'Staff',
+    usage: ['@bot', '{id}'],
+})
 class RemoveBot extends BaseCommand{
-    constructor(){
-        super()
-        this.info = {
-            description: 'Remove um bot da botlist.',
-            module: 'Staff',
-            usage: ['@bot', '{id}'],
-            visible: true
-        }
-    }
-
     execute(){
         if(!this.msg.member?.hasPermission('ADMINISTRATOR') && !this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod))
             return this.msg.react(emojis.error.id)

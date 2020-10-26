@@ -1,21 +1,16 @@
 import { MessageEmbed } from 'discord.js'
-import config from '../../config.json'
-import emojis from '../../emojis.json'
-import { BaseCommand, Command } from '../../modules/handler'
+import config from '../../../config.json'
+import emojis from '../../../emojis.json'
+import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 
 
 @Command('ban')
+@HelpInfo({
+    description: 'Bane um membro.',
+    module: 'Moderação',
+    usage: ['@user', '{id}'] 
+})
 class Ban extends BaseCommand {
-    constructor(){
-        super()
-        this.info = {
-            visible: true,
-            description: 'Bane um membro.',
-            module: 'Moderação',
-            usage: ['@user', '{id}'] 
-        }
-    }
-
     execute(){
         if(!this.msg.member?.roles.cache.has(config.bot.guilds.main.staffroleid.mod) && !this.msg.member?.hasPermission('ADMINISTRATOR'))
             return this.msg.react(emojis.error.id)
