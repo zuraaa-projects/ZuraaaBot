@@ -1,16 +1,15 @@
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 
-class Test extends Command {
-    name = 'test'
-
+@Command('test')
+class Test extends BaseCommand {
     constructor(){
         super()
         this.info.visible = false
     }
 
     execute(){
-        this.msg.channel.send('oi')
+        this.msg.channel.send(process.memoryUsage().heapUsed /1024 /1024)
     }
 }
 
-export default new Test()
+export default Test

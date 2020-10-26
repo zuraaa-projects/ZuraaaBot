@@ -1,11 +1,10 @@
 import { MessageEmbed, TextChannel } from 'discord.js'
 import config from '../../config.json'
 import emojis from '../../emojis.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 
-class Mute extends Command {
-    name = 'mute'
-
+@Command('mute')
+class Mute extends BaseCommand {
     constructor(){
         super()
         this.info = {
@@ -49,4 +48,4 @@ class Mute extends Command {
 }
 
 
-export default new Mute()
+export default Mute

@@ -1,10 +1,10 @@
-import { Command } from "../../modules/handler";
+import { BaseCommand, Command } from "../../modules/handler";
 
 import axios from 'axios'
 import fs from 'fs'
 
-class Download extends Command{
-    name = 'download'
+@Command('download')
+class Download extends BaseCommand{
     constructor(){
         super()
         this.info.visible = false
@@ -25,4 +25,4 @@ class Download extends Command{
     }
 }
 
-export default new Download()
+export default Download

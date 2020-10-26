@@ -1,12 +1,10 @@
 import emojis from '../../emojis.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 import config from '../../config.json'
 import { MessageEmbed } from 'discord.js'
 
-
-class Kick extends Command{
-    name = 'kick'
-
+@Command('kick')
+class Kick extends BaseCommand{
     constructor(){
         super()
         this.info = {
@@ -36,4 +34,4 @@ class Kick extends Command{
     }
 }
 
-export default new Kick()
+export default Kick

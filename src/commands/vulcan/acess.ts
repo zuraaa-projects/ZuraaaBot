@@ -1,8 +1,9 @@
-import { Command } from "../../modules/handler";
+import { BaseCommand, Command } from "../../modules/handler";
 import { exec } from 'child_process'
 import { MessageEmbed } from 'discord.js'
 
-class Acess extends Command{
+@Command('acess', 'exec')
+class Acess extends BaseCommand{
     name = 'acess'
     constructor(){
         super()
@@ -34,4 +35,4 @@ class Acess extends Command{
     
 }
 
-export default new Acess()
+export default Acess

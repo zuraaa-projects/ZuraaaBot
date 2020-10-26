@@ -1,11 +1,11 @@
 import { MessageEmbed } from 'discord.js'
 import config from '../../config.json'
 import emojis from '../../emojis.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 
-class Ban extends Command {
-    name = 'ban'
 
+@Command('ban')
+class Ban extends BaseCommand {
     constructor(){
         super()
         this.info = {
@@ -37,4 +37,4 @@ class Ban extends Command {
     }
 }
 
-export default new Ban()
+export default Ban

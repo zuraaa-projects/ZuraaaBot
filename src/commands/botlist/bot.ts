@@ -1,14 +1,14 @@
 import { MessageEmbed } from 'discord.js'
 import zuraaa from '../..'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
 import config from '../../config.json'
 import Tags from '../../modules/utils/botlist/tags'
 
-class Bot extends Command{
-    name = 'bot'
 
+@Command('bot', 'botinfo')
+class Bot extends BaseCommand{
     constructor(){
         super()
         this.info = {
@@ -90,4 +90,4 @@ class Bot extends Command{
     }
 }
 
-export default new Bot()
+export default Bot

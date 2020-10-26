@@ -1,4 +1,6 @@
-import { Command } from '../../modules/handler'
+/*
+
+import { BaseCommand, Command } from '../../modules/handler'
 import zuraaa from '../../'
 import { EmbedFieldData, MessageEmbed } from 'discord.js'
 import config from '../../config.json'
@@ -9,9 +11,8 @@ interface ICommandModules {
     commands: string[]
 }
 
-class Help extends Command{
-    name = 'help'
-
+@Command('help', 'ajuda', 'commands')
+class Help extends BaseCommand{
     constructor(){
         super()
         this.info.module = 'Utils'
@@ -26,7 +27,7 @@ class Help extends Command{
 
 
         if(this.args.length > 0){
-            const cmd = zuraaa.handler.commands.get(this.args[0]) as Command
+            const cmd = zuraaa.handler.commands.get(this.args[0]) as BaseCommand
 
             if(!cmd || !cmd.info.visible)
                 return this.msg.channel.send(new MessageEmbed()
@@ -59,7 +60,7 @@ class Help extends Command{
         const commandModules: ICommandModules[] = []
 
         zuraaa.handler.commands.forEach(e => {
-            const command = e as Command
+            const command = e as BaseCommand
             if(command.info.visible){
                 const moduleIndex = commandModules.findIndex(x => x.module == command.info.module)
                 if(moduleIndex == -1)
@@ -95,4 +96,5 @@ class Help extends Command{
     }
 }
 
-export default new Help()
+export default Help
+*/

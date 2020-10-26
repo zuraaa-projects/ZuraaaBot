@@ -1,13 +1,12 @@
 import emojis from '../../emojis.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
 import { MessageEmbed } from 'discord.js'
 import config from '../../config.json'
 
-class RemoveBot extends Command{
-    name = 'removebot'
-
+@Command('removebot', 'deletebot', 'rbot', 'dbot')
+class RemoveBot extends BaseCommand{
     constructor(){
         super()
         this.info = {
@@ -41,4 +40,4 @@ class RemoveBot extends Command{
     }
 }
 
-export default new RemoveBot()
+export default RemoveBot

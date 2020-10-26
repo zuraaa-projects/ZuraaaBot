@@ -1,13 +1,12 @@
 import { MessageEmbed } from 'discord.js'
 import config from '../../config.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
 import emojis from '../../emojis.json'
 
-class UserInfo extends Command {
-    name = 'userinfo'
-
+@Command('userinfo', 'uinfo', 'userbots')
+class UserInfo extends BaseCommand {
     constructor(){
         super()
         this.info = {
@@ -57,4 +56,4 @@ class UserInfo extends Command {
     }
 }
 
-export default new UserInfo()
+export default UserInfo

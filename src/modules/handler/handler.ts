@@ -1,11 +1,11 @@
-import { Collection } from 'discord.js'
 import glob from 'glob'
-import Command from './command'
+import { BaseCommand, CommandData } from './types'
 import ZuraaaBot from '../../zuraaa-bot'
 import config from '../../config.json'
+import _ from 'lodash'
 
 class Handler{
-    private _commands = new Collection()
+    private _commands: CommandData[]
 
     constructor(zuraaa: ZuraaaBot){
         zuraaa.client.on('message', msg => {
@@ -19,11 +19,16 @@ class Handler{
 
             const cmd = args.shift()?.toLowerCase()
 
-            if(!this._commands.has(cmd))
+            if(!cmd)
+                return
+
+            const cmdFinded = this._commands.find(x => x.commandNames.findIndex(name => name == cmd) != -1)
+            if(!cmdFinded)
                 return
             
+            
             try{
-                const cmdObj = this._commands.get(cmd) as Command
+                const cmdObj = new cmdFinded.cmdClass() as BaseCommand
                 cmdObj.msg = msg
                 cmdObj.args = args
                 cmdObj.execute()
@@ -31,6 +36,8 @@ class Handler{
                 console.error(err)
             }
         })
+
+        this._commands = []
     }
 
     get commands(){
@@ -49,8 +56,12 @@ class Handler{
             console.log('Serão carregado: ' + files.length + ' comandos!')
             let index = 0
             for(const file of files){
-                const cmd = require(file).default as Command
-                this._commands.set(cmd.name, cmd)
+                const cmd = require(file).default as BaseCommand
+                
+                this._commands.push({
+                    commandNames: Reflect.getMetadata('command:names', cmd),
+                    cmdClass: cmd
+                })
                 console.log((index + 1) + ': ' + file + ' carregado.')
                 index++
             }

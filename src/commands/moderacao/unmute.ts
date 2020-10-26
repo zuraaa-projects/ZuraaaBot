@@ -1,10 +1,10 @@
 import { MessageEmbed, TextChannel } from 'discord.js'
 import config from '../../config.json'
 import emojis from '../../emojis.json'
-import { Command } from '../../modules/handler'
+import { BaseCommand, Command } from '../../modules/handler'
 
-class UnMute extends Command{
-    name = 'unmute'
+@Command('unmute')
+class UnMute extends BaseCommand{
 
     constructor(){
         super()
@@ -48,4 +48,4 @@ class UnMute extends Command{
     }
 }
 
-export default new UnMute()
+export default UnMute
