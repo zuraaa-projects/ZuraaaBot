@@ -30,6 +30,7 @@ class Handler{
             try{
                 const cmdObj = new cmdFinded.cmdClass() as BaseCommand
                 cmdObj.msg = msg
+                cmdObj.zuraaa = zuraaa
                 cmdObj.args = args
                 cmdObj.execute()
             } catch(err){

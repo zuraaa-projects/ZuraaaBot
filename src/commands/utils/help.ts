@@ -1,5 +1,4 @@
 import { BaseCommand, Command, HelpInfo, HelpData } from '../../modules/handler'
-import zuraaa from '../../'
 import { EmbedFieldData, MessageEmbed } from 'discord.js'
 import config from '../../../config.json'
 import emojis from '../../../emojis.json'
@@ -19,7 +18,7 @@ class Help extends BaseCommand{
     }
 
     showCommandInfo(){
-        const cmd = zuraaa.handler.commands.find(x => x.commandNames.findIndex(name => name == this.args[0]) != -1)
+        const cmd = this.zuraaa.handler.commands.find(x => x.commandNames.findIndex(name => name == this.args[0]) != -1)
         let hasCmd = true
         let cmdMetadata: HelpData
         if(cmd){
@@ -69,7 +68,7 @@ class Help extends BaseCommand{
 
         const commandModules: CommandModules[] = []
         
-        for(const cmd of zuraaa.handler.commands){
+        for(const cmd of this.zuraaa.handler.commands){
             let helpData = Reflect.getMetadata('command:help', cmd.cmdClass) as HelpData
             
             if(!helpData)

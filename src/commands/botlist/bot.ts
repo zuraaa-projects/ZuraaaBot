@@ -1,5 +1,4 @@
 import { MessageEmbed } from 'discord.js'
-import zuraaa from '../..'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 import { getMongoRepository } from 'typeorm'
 import Bots from '../../modules/database/entity/bots'
@@ -35,11 +34,11 @@ class Bot extends BaseCommand{
                     .setTitle('O bot não pode ser encontrado.')
                 )
             
-            zuraaa.client.users.fetch(botsfinded[0]._id).then(async botDiscord => {
-                let botowner = '`' + (await zuraaa.client.users.fetch(botsfinded[0].owner)).tag + '`'
+            this.zuraaa.client.users.fetch(botsfinded[0]._id).then(async botDiscord => {
+                let botowner = '`' + (await this.zuraaa.client.users.fetch(botsfinded[0].owner)).tag + '`'
                 for (const ownerid of botsfinded[0].details.otherOwners)
                     if(ownerid)
-                        botowner += '\n`' + (await zuraaa.client.users.fetch(ownerid)).tag + '`'
+                        botowner += '\n`' + (await this.zuraaa.client.users.fetch(ownerid)).tag + '`'
                 
                 const tags = new Tags()
                 this.msg.channel.send(new MessageEmbed()
