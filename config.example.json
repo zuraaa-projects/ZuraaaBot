@@ -1,4 +1,9 @@
 {
+    "api": {
+        "zuraaa": "https://zuraaa.com/api/",
+        "secret": ""
+    },
+    
     "bot": {
         "token": "BotToken",
         "prefix": "Prefix",

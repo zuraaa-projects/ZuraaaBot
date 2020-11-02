@@ -1,4 +1,5 @@
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import ZuraaaApi from '../../modules/api/zuraaaapi'
 
 @Command('test')
 @HelpInfo({
@@ -6,8 +7,10 @@ import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 })
 class Test extends BaseCommand {
     
-    execute(){
-        this.msg.channel.send(process.memoryUsage().heapUsed /1024 /1024)
+    async execute(){
+        const api = new ZuraaaApi()
+
+        console.log(await api.getBot('0'))
     }
 }
 

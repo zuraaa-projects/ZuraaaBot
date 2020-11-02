@@ -1,6 +1,5 @@
 import zuraaa from '../../'
-import {getMongoRepository} from 'typeorm'
-import Bots from '../../modules/database/entity/bots'
+import ZuraaaApi from '../../modules/api/zuraaaapi'
 
 zuraaa.client.on('ready', () => {
     setStatus()
@@ -9,8 +8,9 @@ zuraaa.client.on('ready', () => {
 })
 
 function setStatus(){
-    const botsRepo = getMongoRepository(Bots)
-    botsRepo.count().then(botsCount => {
-        zuraaa.client.user?.setActivity("Todos os " + botsCount + " bots que estão na botlist 😋", {type: "WATCHING"})
-    })
+    const api = new ZuraaaApi()
+
+    api.getBotCount().then(count => {
+        zuraaa.client.user?.setActivity("Todos os " + count.bots_count + " bots que estão na botlist 😋", {type: "WATCHING"})
+    }).catch(console.warn)
 }

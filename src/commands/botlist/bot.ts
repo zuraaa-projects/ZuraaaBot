@@ -1,9 +1,8 @@
 import { MessageEmbed } from 'discord.js'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
-import { getMongoRepository } from 'typeorm'
-import Bots from '../../modules/database/entity/bots'
 import config from '../../../config.json'
 import Tags from '../../modules/utils/botlist/tags'
+import ZuraaaApi from '../../modules/api/zuraaaapi'
 
 
 @Command('bot', 'botinfo')
@@ -23,30 +22,23 @@ class Bot extends BaseCommand{
                 .setTitle('Você precisa mensionar um bot ou mandar o ID de um.')
             )
 
-        const botRepository = getMongoRepository(Bots)
+        const api = new ZuraaaApi()
+        api.getBot(bsearch).then(async botfinded => {
+            const botDiscord = await this.zuraaa.client.users.fetch(botfinded._id)
 
-        botRepository.find({
-            _id: bsearch
-        }).then(botsfinded => {
-            if(botsfinded.length  == 0)
-                return this.msg.channel.send(new MessageEmbed()
-                    .setColor('RED')
-                    .setTitle('O bot não pode ser encontrado.')
-                )
-            
-            this.zuraaa.client.users.fetch(botsfinded[0]._id).then(async botDiscord => {
-                let botowner = '`' + (await this.zuraaa.client.users.fetch(botsfinded[0].owner)).tag + '`'
-                for (const ownerid of botsfinded[0].details.otherOwners)
+            let botowner = '`' + (await this.zuraaa.client.users.fetch(botfinded.owner)).tag + '`'
+                for (const ownerid of botfinded.details.otherOwners)
                     if(ownerid)
                         botowner += '\n`' + (await this.zuraaa.client.users.fetch(ownerid)).tag + '`'
                 
+
                 const tags = new Tags()
                 this.msg.channel.send(new MessageEmbed()
                     .setColor(config.bot.primaryColor)
                     .setThumbnail(botDiscord.displayAvatarURL())
                     .setTitle(botDiscord.tag)
                     .setURL('https://zuraaa.com/bots/' + botDiscord.id)
-                    .setDescription(botsfinded[0].details.shortDescription)
+                    .setDescription(botfinded.details.shortDescription)
                     .addFields([
                         {
                             name: 'Dono(s):',
@@ -55,22 +47,22 @@ class Bot extends BaseCommand{
                         },
                         {
                             name: 'Votos:',
-                            value: botsfinded[0].votes.current,
+                            value: botfinded.votes.current,
                             inline: true
                         },
                         {
                             name: 'Prefixo:',
-                            value: '`' + botsfinded[0].details.prefix + '`',
+                            value: '`' + botfinded.details.prefix + '`',
                             inline: true
                         },
                         {
                             name: 'Biblioteca:',
-                            value: botsfinded[0].details.library,
+                            value: botfinded.details.library,
                             inline: true
                         },
                         {
                             name: 'Tags:',
-                            value: tags.convertTags(botsfinded[0].details.tags).join('\n'),
+                            value: tags.convertTags(botfinded.details.tags).join('\n'),
                             inline: true
                         },
                         {
@@ -79,7 +71,12 @@ class Bot extends BaseCommand{
                             inline: true
                         }
                     ]))
-            })
+            
+        }).catch(() => {
+            return this.msg.channel.send(new MessageEmbed()
+                    .setColor('RED')
+                    .setTitle('O bot não pode ser encontrado.')
+                )
         })
     }
 }

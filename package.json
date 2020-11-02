@@ -31,9 +31,7 @@
     "glob": "^7.1.6",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
-    "mongodb": "^3.6.2",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.27"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",

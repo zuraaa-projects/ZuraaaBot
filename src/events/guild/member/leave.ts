@@ -2,8 +2,7 @@ import zuraaa from '../../../'
 import {GuildMember, MessageEmbed, TextChannel} from 'discord.js'
 import modlogs from '../../../modules/utils/bot/modlogs'
 import config from '../../../../config.json'
-import {getMongoRepository} from 'typeorm'
-import Bots from '../../../modules/database/entity/bots'
+import ZuraaaApi from '../../../modules/api/zuraaaapi'
 
 zuraaa.client.on('guildMemberRemove', member => {
     if(member.guild.id != config.bot.guilds.main.id)
@@ -15,24 +14,17 @@ zuraaa.client.on('guildMemberRemove', member => {
 })
 
 function removeBots(member: GuildMember){
-    if(!member.user.id){
-        const botRepo = getMongoRepository(Bots)
-        botRepo.findOne({
-            where: {
-                $or: [
-                    {
-                        owner: member.id
-                    },
-                    {
-                        'details.otherOwners': member.id
-                    }
-                ]
-            }
-        }).then(bot => {
-            if([...(bot?.details.otherOwners || []), bot?.owner].some(member.guild.fetch) && bot)
-                member.guild.members.fetch(bot._id).then(x => x.kick('Todos os donos sairam'))
-        })
-    }
+    const api = new ZuraaaApi()
+
+    api.getUserBots(member.id).then(userBot => {
+        for(const bot of userBot){
+            if([bot.owner, ...bot.details.otherOwners].some(member.guild.fetch))
+                member.guild.members.cache.get(bot._id)?.kick('Todos os donos sairam.')
+        }
+
+    }).catch(console.warn)
+    
+    
 }
 
 function sendMemberLog(member: GuildMember){

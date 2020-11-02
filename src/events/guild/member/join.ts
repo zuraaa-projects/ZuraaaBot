@@ -2,8 +2,9 @@ import zuraaa from '../../../'
 import config from '../../../../config.json'
 import {MessageEmbed, GuildMember, TextChannel} from 'discord.js'
 import moment from 'moment'
-import {getMongoRepository} from 'typeorm'
-import Bots from '../../../modules/database/entity/bots'
+import ZuraaaApi from '../../../modules/api/zuraaaapi'
+//import {getMongoRepository} from 'typeorm'
+//import Bots from '../../../modules/database/entity/bots'
 
 zuraaa.client.on('guildMemberAdd', member => {
     const guildMember = member as GuildMember
@@ -20,23 +21,12 @@ function autoRole(member: GuildMember){
             if(member.user.bot)
                 member.roles.add(guilds.main.autorole.botrole)
             else{
-                member.roles.add(guilds.main.autorole.member)
-                const botRepo = getMongoRepository(Bots)
-                botRepo.findOne({
-                    where: {
-                        $or: [
-                            {
-                                owner: member.id
-                            },
-                            {
-                                'details.otherOwners': member.id
-                            }
-                        ]
-                    }
-                }).then(botUser => {
-                    if(botUser && botUser.approvedBy)
+                const api = new ZuraaaApi()
+                api.getUserBots(member.id).then(botUser => {
+                    if(botUser.length > 0 && botUser.findIndex(x => x.approvedBy) != -1)
                         member.roles.add(guilds.main.autorole.dev)
-                })
+                }).catch(console.warn)
+                member.roles.add(guilds.main.autorole.member)
             }
         }
 }
