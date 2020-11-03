@@ -27,7 +27,7 @@ $ npm start
 ```
 
 #### Suporte:
-- Suporte feito através do nosso [Discord](https://discord.gg/t5qzWQB)
+- Suporte feito através do nosso [Discord](https://discord.gg/EShHzNtVAb)
 
 #### Fair Use:
 - Fica livre o uso desse software bem como modificações no mesmo desde que dentro da licença GPL v3.0.
