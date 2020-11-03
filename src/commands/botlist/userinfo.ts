@@ -28,7 +28,7 @@ class UserInfo extends BaseCommand {
                 let botsString = ''
                 for(const botfind of bots)
                     botsString += `[${botfind.username}#${botfind.discriminator}](https://zuraaa.com/bots/${botfind._id}/)\n`
-                embed.setDescription(`${details.description}\n\n**Bots desenvolvidos:\n${botsString}**`)
+                embed.setDescription(`${details.description || 'Biografia não definida.'}\n\n**Bots desenvolvidos:\n${botsString}**`)
                 this.msg.channel.send(embed)
             }).catch(() => {
                 this.msg.channel.send(new MessageEmbed()
