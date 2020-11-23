@@ -44,6 +44,17 @@ class ZuraaaApi {
         })).data
     }
 
+    async resetVotes(requestId: string) {
+        const token = (await this.getUserToken(requestId)).access_token;
+        console.log(token);
+        const result = await this.api.put("/bots?type=resetVotes", null, {
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        return result.status == 200;
+    }
+
     async getBotCount(): Promise<CountBot>{
         return (await this.api.get('/bots?type=count')).data
     }
