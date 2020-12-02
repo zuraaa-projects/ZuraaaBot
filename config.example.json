@@ -31,7 +31,9 @@
                     "checker": "checker role id"
                 },
                 "otherroles": {
-                    "mute": "mute role id"
+                    "mute": "mute role id",
+                    "topbots": "top bots role id",
+                    "topbotdevs": "top bots devs role id"
                 }
             },
             "bottest": {
