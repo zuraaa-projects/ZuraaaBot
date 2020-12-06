@@ -21,7 +21,9 @@ class RemoveBot extends BaseCommand{
                     .setColor('RED')
                     .setTitle(emojis.error.name + ' | Bot não está cadastrado.')
                 )
+            this.msg.guild?.member(botId)?.kick()
             this.msg.react(emojis.ok.id)
+            
         }).catch(err => {
             console.error(err)
             this.msg.react(emojis.error.id)
