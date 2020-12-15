@@ -1,37 +1,37 @@
 interface IBaseTags{
-    [index: string]: string
+  [index: string]: string
 }
 
-class Tags{
-    itemTags = {
-        anime: "Anime",
-        dashboard: "Dashboard",
-        diversao: "Diversão",
-        utilidades: "Utilidades",
-        social: "Social",
-        jogos: "Jogos",
-        musica: "Música",
-        moderacao: "Moderação",
-        economia: "Economia",
-        fornite: "Fortnite",
-        lol: "League of Legends",
-        minecraft: "Minecraft",
-        hytale: "Hytale",
-        nsfw: "NSFW",
-        outros: "Outros"
-    } as IBaseTags
+class Tags {
+  itemTags: IBaseTags = {
+    anime: 'Anime',
+    dashboard: 'Dashboard',
+    diversao: 'Diversão',
+    utilidades: 'Utilidades',
+    social: 'Social',
+    jogos: 'Jogos',
+    musica: 'Música',
+    moderacao: 'Moderação',
+    economia: 'Economia',
+    fornite: 'Fortnite',
+    lol: 'League of Legends',
+    minecraft: 'Minecraft',
+    hytale: 'Hytale',
+    nsfw: 'NSFW',
+    outros: 'Outros'
+  }
 
-    convertTags(tags: string[]){
-        for(let i = 0; i < tags.length; i++){
-            tags[i] = this.itemTags[tags[i]]
-        }
-        return tags
+  convertTags (tags: string[]): string[] {
+    for (let i = 0; i < tags.length; i++) {
+      tags[i] = this.itemTags[tags[i]]
     }
+    return tags
+  }
 }
 
 export {
-    IBaseTags,
-    Tags
+  IBaseTags,
+  Tags
 }
 
 export default Tags

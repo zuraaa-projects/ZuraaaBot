@@ -1,7 +1,7 @@
 export interface User{
-    details: UserDetails
+  details: UserDetails
 }
 
 export interface UserDetails{
-    description: string
+  description: string
 }

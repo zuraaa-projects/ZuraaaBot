@@ -1,30 +1,29 @@
 export interface Bot{
-    _id: string
-    username: string
-    discriminator: string
-    details: BotDetails
-    owner: string
-    approvedBy: string
-    votes: BotVotes
+  _id: string
+  username: string
+  discriminator: string
+  details: BotDetails
+  owner: string
+  approvedBy: string
+  votes: BotVotes
 }
 
 export interface BotDetails {
-    prefix: string
-    library: string
-    shortDescription: string
-    tags: string[]
-    otherOwners: string[]
+  prefix: string
+  library: string
+  shortDescription: string
+  tags: string[]
+  otherOwners: string[]
 }
 
-
 export interface BotVotes{
-    current: number
+  current: number
 }
 
 export interface DeleteBot{
-    deleted: boolean
+  deleted: boolean
 }
 
 export interface CountBot{
-    bots_count: string
+  bots_count: string
 }

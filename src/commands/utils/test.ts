@@ -3,15 +3,14 @@ import ZuraaaApi from '../../modules/api/zuraaaapi'
 
 @Command('test')
 @HelpInfo({
-    visible: false
+  visible: false
 })
 class Test extends BaseCommand {
-    
-    async execute(){
-        const api = new ZuraaaApi()
+  async execute (): Promise<void> {
+    const api = new ZuraaaApi()
 
-        console.log(await api.getBot('0'))
-    }
+    console.log(await api.getBot('0'))
+  }
 }
 
 export default Test
