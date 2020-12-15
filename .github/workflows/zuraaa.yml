@@ -43,5 +43,5 @@ jobs:
         run: yarn
       - name: Run Linter ✏️
         run: yarn lint
-      - name: Run Builder 🥞
-        run: yarn build
+    # - name: Run Builder 🥞
+    #   run: yarn build
