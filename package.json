@@ -5,7 +5,10 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node .",
-    "dev": "ts-node-dev ."
+    "dev": "ts-node-dev .",
+    "build": "tsc -p .",
+    "lint": "eslint --ext .ts --ignore-path .gitignore .",
+    "lintfix": "eslint --ext .ts --ignore-path .gitignore --fix ."
   },
   "repository": {
     "type": "git",
