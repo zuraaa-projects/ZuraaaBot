@@ -52,8 +52,9 @@ class Help extends BaseCommand {
       cmdMetadata.usage = ['']
     }
     let usage = ''
+    const prefix: string = config.bot.prefix
     for (const argusage of cmdMetadata?.usage) {
-      usage += config.bot.prefix + (cmd?.commandNames[0] as string) + ' ' + argusage + '\n'
+      usage += prefix + (cmd?.commandNames[0] as string) + ' ' + argusage + '\n'
     }
 
     embed.addField('Uso(s) do comando:', usage)
@@ -70,10 +71,11 @@ class Help extends BaseCommand {
   }
 
   showAllCommands (): void {
+    const prefix: string = config.bot.prefix
     const embed = new MessageEmbed()
       .setColor(config.bot.primaryColor)
       .setTitle('**Comandos do Bot:**')
-      .setDescription('Use: `' + config.bot.prefix + 'help {nome do comando}` para mais informações.')
+      .setDescription('Use: `' + prefix + 'help {nome do comando}` para mais informações.')
 
     const commandModules: CommandModules[] = []
 

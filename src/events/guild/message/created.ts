@@ -24,9 +24,10 @@ function selfMention (msg: Message): void {
 
   const selfMention = msg.mentions.users.get(zuraaa.client.user.id)
   if (selfMention !== undefined && msg.content.length < zuraaa.client.user.id.length + 5) {
+    const prefix: string = config.bot.prefix
     msg.channel.send(new MessageEmbed()
       .setColor(config.bot.primaryColor)
-      .setTitle(`${msg.author.username}, meu prefixo é \`${config.bot.prefix}\`, para ver meus comandos basta usar o comando \`${config.bot.prefix}help\`!`))
+      .setTitle(`${msg.author.username}, meu prefixo é \`${prefix}\`, para ver meus comandos basta usar o comando \`${prefix}help\`!`))
       .catch(console.error)
   }
 }
