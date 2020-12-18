@@ -4,3 +4,6 @@ config.json
 package-lock.json
 ormconfig.json
 uploads/
+.vscode/
+yarn-error.log
+local.db

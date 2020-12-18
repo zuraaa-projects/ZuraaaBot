@@ -1,14 +1,17 @@
 import zuraaa from '../../'
 import ZuraaaApi from '../../modules/api/zuraaaapi'
-// import config from '../../../config.json'
-// import { Guild, Role } from 'discord.js'
+import config from '../../../config.json'
+import { DiscordAPIError, Guild, GuildMember } from 'discord.js'
 
 const api = new ZuraaaApi()
 
 zuraaa.client.on('ready', () => {
   setStatus()
   setInterval(setStatus, 300000)
-  // setInterval(updateTop, 30000) //! INDEV
+  updateTop().catch(console.error)
+  setInterval(() => {
+    updateTop().catch(console.error)
+  }, 36e5)
   console.log(zuraaa.client.user?.username as string + ' se encontra online!')
 })
 
@@ -19,38 +22,85 @@ function setStatus (): void {
   }).catch(console.warn)
 }
 
-// async function updateTop (): Promise<void> {
-//   const topBots = await api.getTopBots()
-//   const mainGuild = config.bot.guilds.main
-//   const zuraaaDiscord = zuraaa.client.guilds.cache.get(mainGuild.id)
-//   if (zuraaaDiscord === undefined) {
-//     return
-//   }
+async function updateTop (): Promise<void> {
+  const topBots = await api.getTopBots()
+  const mainGuild = config.bot.guilds.main
+  const zuraaaDiscord = zuraaa.client.guilds.cache.get(mainGuild.id)
+  if (zuraaaDiscord === undefined) {
+    return
+  }
 
-//   const topDevsRole = await zuraaaDiscord.roles.fetch(mainGuild.otherroles.topbotdevs)
-//   const topDevsIds = topBots.map(bot => bot.owner)
-//   if (topDevsRole !== null) {
-//     updateRoles(topDevsRole, topDevsIds, zuraaaDiscord).catch(console.error)
-//   }
+  const topDevsIds = topBots.map(bot => bot.owner)
+  await updateRoles(mainGuild.otherroles.topbotdevs, [...new Set(topDevsIds)], zuraaaDiscord)
 
-//   const topBotsRole = await zuraaaDiscord?.roles.fetch(mainGuild.otherroles.topbots)
-//   const topBotsIds = topBots.map(bot => bot._id)
-//   if (topBotsRole !== null) {
-//     updateRoles(topBotsRole, topBotsIds, zuraaaDiscord).catch(console.error)
-//   }
-// }
+  const topBotsIds = topBots.map(bot => bot._id)
+  await updateRoles(mainGuild.otherroles.topbots, topBotsIds, zuraaaDiscord, true)
+}
 
-// async function updateRoles (role: Role, newIds: string[], guild: Guild): Promise<void> {
-// TODO: REFATORAR TODO COMANDO DE ATUALIZAR OS CARGOS
-// ! DEVEMOS PENSAR EM UMA FORMA MELHOR DE FAZER
-// ? Como devemos fazer?
-// * Nota: eu passei 3 horas olhando isso, não consigo pensar
-// * em como fazer sem usar o cache e sem dar fetch em todos
-// * os usuários (impossivel) pois nem o Discord e nem o DiscordJS possuem
-// * uma forma de dar fetch em todos os membros **de uma determinada role**
+async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?: boolean): Promise<void> {
+  const { MostVoted, Role } = zuraaa.models
+  const [{ id: dbRoleId }] = await Role.findOrCreate({
+    limit: 1,
+    where: {
+      discordId: roleId
+    }
+  })
+  const cachedUsers = (await MostVoted.findAll({
+    where: {
+      RoleId: dbRoleId
+    },
+    attributes: ['id']
+  })).map(user => user.id)
+  if (cachedUsers.length === 0) {
+    console.warn(`Sme informações dos usuários com o cargo ${roleId}.`)
+  }
+  const withoutRole = newIds.filter(userId => !cachedUsers.includes(userId))
+  const toRemove = cachedUsers.filter(userId => !newIds.includes(userId))
 
-// ? Possiveis soluções:
-/// / Dar fetch em todos os usuários e depois comparar (impossível, limite de usuários por fetch)
-/// / Dar fetch apenas nos usuários de uma determinada role (não encontramos como)
-// * (Estou sem ideias)
-// }
+  const change = (userId: string, operation: 'add' | 'remove', action?: (member: GuildMember) => Promise<void>): void => {
+    guild.members.fetch(userId).then(member => {
+      member?.roles[operation](roleId).catch(console.error)
+      if (action !== undefined) {
+        action(member).catch(console.error)
+      }
+    }).catch(error => {
+      if (!(error instanceof DiscordAPIError && error.code === 10007)) {
+        console.error(error)
+      }
+    })
+  }
+  withoutRole.forEach(userId => {
+    change(userId, 'add')
+  })
+  await MostVoted.bulkCreate(
+    withoutRole.map(userId => ({
+      id: userId, RoleId: dbRoleId
+    }))).catch(console.error)
+
+  const isBot = bot !== undefined && bot
+  toRemove.forEach(userId => {
+    change(userId, 'remove', async member => {
+      if (isBot) {
+        await member.setNickname('')
+      }
+    })
+  })
+  await MostVoted.destroy({
+    where: {
+      id: toRemove
+    }
+  })
+  if (isBot) {
+    newIds.forEach((userId, index) => {
+      guild.members.fetch(userId).then(member => {
+        if (member !== null) {
+          member.setNickname(`${index + 1}° ${member.user.username}`).catch(console.error)
+        }
+      }).catch(error => {
+        if (!(error instanceof DiscordAPIError && error.code === 10007)) {
+          console.error(error)
+        }
+      })
+    })
+  }
+}
