@@ -24,16 +24,13 @@ class Kick extends BaseCommand {
         .setTitle(emojis.error.name + ' | Não encontrei o membro.')
       )
     }
-        
     const member = this.msg.guild?.member(user)
-        
     if (!member.kickable) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(emojis.error.name + ' | Membro não pode ser expulso.')
       )
     }
-        
     let reason = 'Sem motivo informado.'
     if (this.args.slice(1).join(' ') !== '') {
       reason = this.args.slice(1).join(' ')
