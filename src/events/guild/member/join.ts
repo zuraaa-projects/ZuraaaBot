@@ -1,5 +1,5 @@
-import zuraaa from '../../../'
-import config from '../../../../config.json'
+import zuraaa from '@/src'
+import config from '@/config.json'
 import { MessageEmbed, GuildMember, TextChannel } from 'discord.js'
 import moment from 'moment'
 import ZuraaaApi from '../../../modules/api/zuraaaapi'

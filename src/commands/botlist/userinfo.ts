@@ -1,7 +1,7 @@
 import { MessageEmbed } from 'discord.js'
-import config from '../../../config.json'
+import config from '@/config.json'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
-import emojis from '../../../emojis.json'
+import emojis from '@/emojis.json'
 import ZuraaaApi from '../../modules/api/zuraaaapi'
 
 @Command('userinfo', 'uinfo', 'userbots', 'user')
@@ -34,13 +34,13 @@ class UserInfo extends BaseCommand {
       }).catch(() => {
         this.msg.channel.send(new MessageEmbed()
           .setColor('RED')
-          .setTitle(emojis.error.name + ' | O usuario solicitado não é cadastrado no Zuraaa')
+          .setTitle(`${emojis.error.name} | O usuario solicitado não é cadastrado no Zuraaa`)
         )
           .catch(console.error)
       })
     }).catch(() => {
       this.msg.channel.send(new MessageEmbed()
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
         .setColor('RED')
       )
         .catch(console.error)

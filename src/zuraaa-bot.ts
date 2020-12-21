@@ -1,4 +1,4 @@
-import config from '../config.json'
+import config from '@/config.json'
 import Discord from 'discord.js'
 import { Handler } from './modules/handler'
 import MostVoted from './modules/database/models/MostVoted'

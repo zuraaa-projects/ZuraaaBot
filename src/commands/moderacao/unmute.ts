@@ -1,6 +1,6 @@
 import { Message, MessageEmbed, MessageReaction, TextChannel } from 'discord.js'
-import config from '../../../config.json'
-import emojis from '../../../emojis.json'
+import config from '@/config.json'
+import emojis from '@/emojis.json'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 
 @Command('unmute')
@@ -21,7 +21,7 @@ class UnMute extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
       )
     }
     let reason = 'Sem motivo informado.'
@@ -33,7 +33,7 @@ class UnMute extends BaseCommand {
       if (!member.roles.cache.has(config.bot.guilds.main.otherroles.mute)) {
         return this.msg.channel.send(new MessageEmbed()
           .setColor('RED')
-          .setTitle(emojis.error.name + ' | Esse usuario não estava mutado.')
+          .setTitle(`${emojis.error.name} | Esse usuario não estava mutado.`)
         )
       }
       member.roles.remove(config.bot.guilds.main.otherroles.mute)

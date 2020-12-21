@@ -1,6 +1,6 @@
 import { MessageEmbed, Message } from 'discord.js'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
-import config from '../../../config.json'
+import config from '@/config.json'
 import Tags from '../../modules/utils/botlist/tags'
 import ZuraaaApi from '../../modules/api/zuraaaapi'
 

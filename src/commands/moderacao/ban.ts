@@ -1,6 +1,6 @@
 import { MessageEmbed, MessageReaction, Message } from 'discord.js'
-import config from '../../../config.json'
-import emojis from '../../../emojis.json'
+import config from '@/config.json'
+import emojis from '@/emojis.json'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 
 @Command('ban')
@@ -21,7 +21,7 @@ class Ban extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
       )
     }
 
@@ -30,14 +30,14 @@ class Ban extends BaseCommand {
     if (member === null || member === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
       )
     }
 
     if (!member.bannable) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Este Membro não pode ser banido.')
+        .setTitle(`${emojis.error.name} | Este Membro não pode ser banido.`)
       )
     }
 

@@ -1,7 +1,7 @@
-import zuraaa from '../../'
+import zuraaa from '@/src'
 import ZuraaaApi from '../../modules/api/zuraaaapi'
-import config from '../../../config.json'
-import { DiscordAPIError, Guild, GuildMember } from 'discord.js'
+import config from '@/config.json'
+import { DiscordAPIError, Guild, GuildMember, Role } from 'discord.js'
 
 const api = new ZuraaaApi()
 
@@ -11,7 +11,7 @@ zuraaa.client.on('ready', () => {
   updateTop().catch(console.error)
   setInterval(() => {
     updateTop().catch(console.error)
-  }, 36e5)
+  }, 30000)
   console.log(zuraaa.client.user?.username as string + ' se encontra online!')
 })
 
@@ -27,7 +27,7 @@ async function updateTop (): Promise<void> {
   const mainGuild = config.bot.guilds.main
   const zuraaaDiscord = zuraaa.client.guilds.cache.get(mainGuild.id)
   if (zuraaaDiscord === undefined) {
-    return
+    return console.log('Não encontrei a guild principal!')
   }
 
   const topDevsIds = topBots.map(bot => bot.owner)
@@ -52,16 +52,20 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
     attributes: ['id']
   })).map(user => user.id)
   if (cachedUsers.length === 0) {
-    console.warn(`Sme informações dos usuários com o cargo ${roleId}.`)
+    console.warn(`Sem informações dos usuários com o cargo ${roleId}.`)
   }
   const withoutRole = newIds.filter(userId => !cachedUsers.includes(userId))
   const toRemove = cachedUsers.filter(userId => !newIds.includes(userId))
 
-  const change = (userId: string, operation: 'add' | 'remove', action?: (member: GuildMember) => Promise<void>): void => {
+  const change = (userId: string, operation: 'add' | 'remove', action?: (member: GuildMember, role: Role) => Promise<void>): void => {
     guild.members.fetch(userId).then(member => {
-      member?.roles[operation](roleId).catch(console.error)
+      const role = guild.roles.cache.get(roleId)
+      if (role === undefined) {
+        return
+      }
+      member?.roles[operation](role).catch(console.error)
       if (action !== undefined) {
-        action(member).catch(console.error)
+        action(member, role).catch(console.error)
       }
     }).catch(error => {
       if (!(error instanceof DiscordAPIError && error.code === 10007)) {
@@ -70,7 +74,7 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
     })
   }
   withoutRole.forEach(userId => {
-    change(userId, 'add')
+    change(userId, 'add', async (member, role) => console.log(`${role.name} adiconado pra ${member.user.username}`))
   })
   await MostVoted.bulkCreate(
     withoutRole.map(userId => ({
@@ -79,7 +83,8 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
 
   const isBot = bot !== undefined && bot
   toRemove.forEach(userId => {
-    change(userId, 'remove', async member => {
+    change(userId, 'remove', async (member, role) => {
+      console.log(`${role.name} removido pra ${member.user.username}`)
       if (isBot) {
         await member.setNickname('')
       }

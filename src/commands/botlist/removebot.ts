@@ -1,4 +1,4 @@
-import emojis from '../../../emojis.json'
+import emojis from '@/emojis.json'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
 import { MessageEmbed } from 'discord.js'
 import ZuraaaApi from '../../modules/api/zuraaaapi'
@@ -19,7 +19,7 @@ class RemoveBot extends BaseCommand {
       if (!result.deleted) {
         return this.msg.channel.send(new MessageEmbed()
           .setColor('RED')
-          .setTitle(emojis.error.name + ' | Bot não está cadastrado.')
+          .setTitle(`${emojis.error.name} | Bot não está cadastrado.`)
         )
       }
       this.msg.guild?.member(botId)?.kick()

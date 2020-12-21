@@ -1,7 +1,7 @@
 import Axios, { AxiosInstance } from 'axios'
 import { Bot, CountBot, DeleteBot } from './entitys/bot'
 import { User } from './entitys/user'
-import { api } from '../../../config.json'
+import { api } from '@/config.json'
 import { Auth } from './entitys/auth'
 
 class ZuraaaApi {

@@ -1,7 +1,7 @@
 import glob from 'glob'
 import { BaseCommand, CommandData } from './types'
-import ZuraaaBot from '../../zuraaa-bot'
-import config from '../../../config.json'
+import ZuraaaBot from '@/src/zuraaa-bot'
+import config from '@/config.json'
 
 class Handler {
   private readonly _commands: CommandData[]

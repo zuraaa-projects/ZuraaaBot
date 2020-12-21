@@ -1,6 +1,6 @@
 import { MessageEmbed, MessageReaction, TextChannel } from 'discord.js'
-import zuraaa from '../../../'
-import config from '../../../../config.json'
+import zuraaa from '@/src'
+import config from '@/config.json'
 
 zuraaa.client.on('messageReactionAdd', (reaction) => {
   starboard(reaction)

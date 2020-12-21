@@ -1,7 +1,7 @@
-import zuraaa from '../../../'
+import zuraaa from '@/src'
 import { GuildMember, MessageEmbed, TextChannel } from 'discord.js'
 import modlogs from '../../../modules/utils/bot/modlogs'
-import config from '../../../../config.json'
+import config from '@/config.json'
 import ZuraaaApi from '../../../modules/api/zuraaaapi'
 
 zuraaa.client.on('guildMemberRemove', member => {

@@ -1,5 +1,5 @@
-import zuraaa from '../../../'
-import config from '../../../../config.json'
+import zuraaa from '@/src'
+import config from '@/config.json'
 import { Message, MessageEmbed } from 'discord.js'
 
 zuraaa.client.on('message', msg => {

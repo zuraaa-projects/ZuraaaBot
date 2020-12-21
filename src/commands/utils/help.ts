@@ -1,8 +1,7 @@
 import { BaseCommand, Command, HelpInfo, HelpData } from '../../modules/handler'
 import { EmbedFieldData, Message, MessageEmbed } from 'discord.js'
-import config from '../../../config.json'
-import emojis from '../../../emojis.json'
-
+import config from '@/config.json'
+import emojis from '@/emojis.json'
 @Command('help', 'ajuda', 'commands')
 @HelpInfo({
   module: 'Utils',
@@ -29,7 +28,7 @@ class Help extends BaseCommand {
     if (!hasCmd) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Este comando não foi encontrado.')
+        .setTitle(`${emojis.error.name} | Este comando não foi encontrado.`)
       )
     }
 

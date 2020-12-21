@@ -1,6 +1,6 @@
-import emojis from '../../../emojis.json'
+import emojis from '@/emojis.json'
 import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
-import config from '../../../config.json'
+import config from '@/config.json'
 import { MessageEmbed, MessageReaction, Message } from 'discord.js'
 
 @Command('kick')
@@ -21,20 +21,20 @@ class Kick extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
       )
     }
     const member = this.msg.guild?.member(user)
     if (member === null || member === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+        .setTitle(`${emojis.error.name} | Não encontrei o membro especificado :(`)
       )
     }
     if (!member.kickable) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Este Membro não pode ser expulso.')
+        .setTitle(`${emojis.error.name} | Este Membro não pode ser expulso.`)
       )
     }
     let reason = 'Sem motivo informado.'

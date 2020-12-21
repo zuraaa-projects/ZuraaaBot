@@ -1,4 +1,4 @@
-import config from '../../../../config.json'
+import config from '@/config.json'
 import { Guild, MessageEmbed, TextChannel, User } from 'discord.js'
 
 let lastLogId = ''

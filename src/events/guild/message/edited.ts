@@ -1,4 +1,4 @@
-import zuraaa from '../../../'
+import zuraaa from '@/src'
 import { Message } from 'discord.js'
 
 zuraaa.client.on('messageUpdate', (_old, newer) => {
