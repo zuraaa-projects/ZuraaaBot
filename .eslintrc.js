@@ -23,7 +23,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    '@typescript-eslint/eslint-plugin'
+    '@typescript-eslint/eslint-plugin',
+    'import'
   ],
   rules: {
     'linebreak-style': ['error', 'unix'],
