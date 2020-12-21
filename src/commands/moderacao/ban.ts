@@ -28,7 +28,10 @@ class Ban extends BaseCommand {
     const member = this.msg.guild?.member(user)
 
     if (member === null || member === undefined) {
-      return
+      return this.msg.channel.send(new MessageEmbed()
+        .setColor('RED')
+        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
+      )
     }
 
     if (!member.bannable) {
