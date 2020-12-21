@@ -13,7 +13,8 @@ class Help extends BaseCommand {
     if (this.args.length === 0) {
       this.showAllCommands()
     } else {
-      this.showCommandInfo()?.catch(console.error)
+      this.showCommandInfo()
+        ?.catch(console.error)
     }
   }
 
@@ -120,7 +121,8 @@ class Help extends BaseCommand {
     }
 
     embed.addFields(embedFields)
-    this.msg.channel.send(embed).catch(console.error)
+    this.msg.channel.send(embed)
+      .catch(console.error)
   }
 }
 

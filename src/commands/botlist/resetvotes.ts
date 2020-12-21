@@ -12,12 +12,15 @@ class ResetVotes extends BaseCommand {
     try {
       const result = await api.resetVotes(this.msg.author.id)
       if (result) {
-        this.msg.react(emojis.ok.id).catch(console.error)
+        this.msg.react(emojis.ok.id)
+          .catch(console.error)
       } else {
-        this.msg.react(emojis.error.id).catch(console.error)
+        this.msg.react(emojis.error.id)
+          .catch(console.error)
       }
     } catch (err) {
-      this.msg.react(emojis.error.id).catch(console.error)
+      this.msg.react(emojis.error.id)
+        .catch(console.error)
     }
   }
 }

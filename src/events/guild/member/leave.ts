@@ -20,10 +20,12 @@ function removeBots (member: GuildMember): void {
   api.getUserBots(member.id).then(userBots => {
     for (const bot of userBots) {
       if ([bot.owner, ...bot.details.otherOwners].some(member.guild.fetch)) {
-        member.guild.members.cache.get(bot._id)?.kick('Todos os donos sairam.').catch(console.error)
+        member.guild.members.cache.get(bot._id)?.kick('Todos os donos sairam.')
+          .catch(console.error)
       }
     }
-  }).catch(console.warn)
+  })
+    .catch(console.error)
 }
 
 function sendMemberLog (member: GuildMember): void {
@@ -47,5 +49,6 @@ function sendMemberLog (member: GuildMember): void {
         value: (member.user.bot) ? 'Sim' : 'Não',
         inline: true
       }
-    ])).catch(console.error)
+    ]))
+    .catch(console.error)
 }

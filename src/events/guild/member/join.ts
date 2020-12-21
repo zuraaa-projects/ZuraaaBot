@@ -12,19 +12,25 @@ zuraaa.client.on('guildMemberAdd', member => {
 function autoRole (member: GuildMember): void {
   const guilds = config.bot.guilds
   if (member.guild.id === guilds.bottest.id && member.user.bot) {
-    member.roles.add(guilds.bottest.autorole.botrole).catch(console.error)
+    member.roles.add(guilds.bottest.autorole.botrole)
+      .catch(console.error)
   } else
   if (member.guild.id === guilds.main.id) {
     if (member.user.bot) {
-      member.roles.add(guilds.main.autorole.botrole).catch(console.error)
+      member.roles.add(guilds.main.autorole.botrole)
+        .catch(console.error)
     } else {
       const api = new ZuraaaApi()
       api.getUserBots(member.id).then(botUser => {
         if (botUser.length > 0 && botUser.findIndex(x => x.approvedBy) !== -1) {
-          member.roles.add(guilds.main.autorole.dev).catch(console.error)
+          member.roles.add(guilds.main.autorole.dev)
+            .catch(console.error)
         }
-      }).catch(console.warn)
-      member.roles.add(guilds.main.autorole.member).catch(console.error)
+      })
+        .catch(console.error)
+
+      member.roles.add(guilds.main.autorole.member)
+        .catch(console.error)
     }
   }
 }
@@ -61,5 +67,6 @@ function memberLog (member: GuildMember): void {
       }
     ])
     .setFooter(member.id)
-  ).catch(console.error)
+  )
+    .catch(console.error)
 }

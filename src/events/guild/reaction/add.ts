@@ -33,7 +33,9 @@ function starboard (reaction: MessageReaction): void {
       starmsg.setImage(image.url)
     }
 
-    channel.send(starmsg).catch(console.error)
-    reaction.message.react('🌟').catch(console.error)
+    channel.send(starmsg)
+      .catch(console.error)
+    reaction.message.react('🌟')
+      .catch(console.error)
   }
 }

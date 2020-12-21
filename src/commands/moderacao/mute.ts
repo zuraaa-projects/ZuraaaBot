@@ -39,7 +39,8 @@ class Mute extends BaseCommand {
       member.roles.add(config.bot.guilds.main.otherroles.mute)
         .catch(console.error)
         .then(() => {
-          this.msg.react(emojis.ok.id).catch(console.error)
+          this.msg.react(emojis.ok.id)
+            .catch(console.error)
 
           const logchannel = this.msg.guild?.channels.cache.get(config.bot.guilds.main.channels.modlog) as TextChannel
           logchannel.send(new MessageEmbed()

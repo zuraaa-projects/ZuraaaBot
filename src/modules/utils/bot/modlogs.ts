@@ -27,8 +27,10 @@ export default (guild: Guild): void => {
         .setDescription(`Motivo: \`${motivo}\``)
         .setTitle(`${audictEntry.executor.tag} ${type} ${userTargget.tag} (${userTargget.id})`)
         .setColor(config.bot.primaryColor)
-      ).catch(console.error)
+      )
+        .catch(console.error)
       lastLogId = audictEntry.id
     }
-  }).catch(console.error)
+  })
+    .catch(console.error)
 }

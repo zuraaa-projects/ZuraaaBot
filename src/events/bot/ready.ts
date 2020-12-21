@@ -8,9 +8,11 @@ const api = new ZuraaaApi()
 zuraaa.client.on('ready', () => {
   setStatus()
   setInterval(setStatus, 300000)
-  updateTop().catch(console.error)
+  updateTop()
+    .catch(console.error)
   setInterval(() => {
-    updateTop().catch(console.error)
+    updateTop()
+      .catch(console.error)
   }, 30000)
   console.log(zuraaa.client.user?.username as string + ' se encontra online!')
 })
@@ -19,7 +21,8 @@ function setStatus (): void {
   api.getBotCount().then(count => {
     zuraaa.client.user?.setActivity('Todos os ' + count.bots_count + ' bots que estão na botlist 😋', { type: 'WATCHING' })
       .catch(console.error)
-  }).catch(console.warn)
+  })
+    .catch(console.error)
 }
 
 async function updateTop (): Promise<void> {
@@ -63,9 +66,11 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
       if (role === undefined) {
         return
       }
-      member?.roles[operation](role).catch(console.error)
+      member?.roles[operation](role)
+        .catch(console.error)
       if (action !== undefined) {
-        action(member, role).catch(console.error)
+        action(member, role)
+          .catch(console.error)
       }
     }).catch(error => {
       if (!(error instanceof DiscordAPIError && error.code === 10007)) {
@@ -79,7 +84,8 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
   await MostVoted.bulkCreate(
     withoutRole.map(userId => ({
       id: userId, RoleId: dbRoleId
-    }))).catch(console.error)
+    })))
+    .catch(console.error)
 
   const isBot = bot !== undefined && bot
   toRemove.forEach(userId => {
@@ -99,7 +105,8 @@ async function updateRoles (roleId: string, newIds: string[], guild: Guild, bot?
     newIds.forEach((userId, index) => {
       guild.members.fetch(userId).then(member => {
         if (member !== null) {
-          member.setNickname(`${index + 1}° ${member.user.username}`).catch(console.error)
+          member.setNickname(`${index + 1}° ${member.user.username}`)
+            .catch(console.error)
         }
       }).catch(error => {
         if (!(error instanceof DiscordAPIError && error.code === 10007)) {

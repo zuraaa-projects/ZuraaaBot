@@ -38,7 +38,8 @@ class ZuraaaBot {
     this._handler.build()
     this._localDatabase.connect().then(
       async () => await this._client.login(config.bot.token)
-    ).catch(console.error)
+    )
+      .catch(console.error)
   }
 }
 
