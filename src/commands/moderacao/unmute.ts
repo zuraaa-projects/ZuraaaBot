@@ -21,7 +21,7 @@ class UnMute extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não foi possivel encontrar o membro.')
+        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
       )
     }
     let reason = 'Sem motivo informado.'

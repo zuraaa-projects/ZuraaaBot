@@ -29,7 +29,7 @@ class Help extends BaseCommand {
     if (!hasCmd) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Comando não foi encontrado.')
+        .setTitle(emojis.error.name + ' | Este comando não foi encontrado.')
       )
     }
 

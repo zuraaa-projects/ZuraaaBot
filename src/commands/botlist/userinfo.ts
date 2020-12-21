@@ -40,7 +40,7 @@ class UserInfo extends BaseCommand {
       })
     }).catch(() => {
       this.msg.channel.send(new MessageEmbed()
-        .setTitle(emojis.error.name + ' | Usuario não foi encontrado.')
+        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
         .setColor('RED')
       )
         .catch(console.error)
