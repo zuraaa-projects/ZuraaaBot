@@ -1,5 +1,5 @@
-import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
-import ZuraaaApi from '../../modules/api/zuraaaapi'
+import { BaseCommand, Command, HelpInfo } from '@modules/handler'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 import emojis from '@/emojis.json'
 
 @Command('resetvotes')

@@ -1,4 +1,4 @@
-import zuraaa from '@/src'
+import zuraaa from '@bot'
 import config from '@/config.json'
 import { Message, MessageEmbed } from 'discord.js'
 

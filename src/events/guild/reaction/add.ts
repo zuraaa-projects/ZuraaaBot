@@ -1,5 +1,5 @@
 import { MessageEmbed, MessageReaction, TextChannel } from 'discord.js'
-import zuraaa from '@/src'
+import zuraaa from '@bot'
 import config from '@/config.json'
 
 zuraaa.client.on('messageReactionAdd', (reaction) => {

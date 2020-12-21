@@ -1,8 +1,8 @@
-import zuraaa from '@/src'
+import zuraaa from '@bot'
 import config from '@/config.json'
 import { MessageEmbed, GuildMember, TextChannel } from 'discord.js'
 import moment from 'moment'
-import ZuraaaApi from '../../../modules/api/zuraaaapi'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 
 zuraaa.client.on('guildMemberAdd', member => {
   autoRole(member)

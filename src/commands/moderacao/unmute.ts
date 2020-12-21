@@ -1,7 +1,7 @@
 import { Message, MessageEmbed, MessageReaction, TextChannel } from 'discord.js'
 import config from '@/config.json'
 import emojis from '@/emojis.json'
-import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 
 @Command('unmute')
 @HelpInfo({

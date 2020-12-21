@@ -1,7 +1,7 @@
 import emojis from '@/emojis.json'
-import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 import { MessageEmbed } from 'discord.js'
-import ZuraaaApi from '../../modules/api/zuraaaapi'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 
 @Command('removebot', 'deletebot', 'rbot', 'dbot')
 @HelpInfo({

@@ -1,8 +1,8 @@
 import { MessageEmbed } from 'discord.js'
 import config from '@/config.json'
-import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 import emojis from '@/emojis.json'
-import ZuraaaApi from '../../modules/api/zuraaaapi'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 
 @Command('userinfo', 'uinfo', 'userbots', 'user')
 @HelpInfo({

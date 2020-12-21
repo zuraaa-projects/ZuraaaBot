@@ -1,8 +1,8 @@
-import zuraaa from '@/src'
+import zuraaa from '@bot'
 import { GuildMember, MessageEmbed, TextChannel } from 'discord.js'
-import modlogs from '../../../modules/utils/bot/modlogs'
+import modlogs from '@modules/utils/bot/modlogs'
 import config from '@/config.json'
-import ZuraaaApi from '../../../modules/api/zuraaaapi'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 
 zuraaa.client.on('guildMemberRemove', member => {
   if (member.guild.id !== config.bot.guilds.main.id) {

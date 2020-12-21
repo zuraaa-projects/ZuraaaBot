@@ -1,10 +1,10 @@
 import config from '@/config.json'
 import Discord from 'discord.js'
-import { Handler } from './modules/handler'
-import MostVoted from './modules/database/models/MostVoted'
-import Role from './modules/database/models/Role'
-import { Models } from './modules/database/types'
-import LocalDatabase from './modules/database/LocalDatabase'
+import { Handler } from '@modules/handler'
+import MostVoted from '@modules/database/models/MostVoted'
+import Role from '@modules/database/models/Role'
+import { Models } from '@modules/database/types'
+import LocalDatabase from '@modules/database/LocalDatabase'
 class ZuraaaBot {
   private readonly _client = new Discord.Client()
   private readonly _handler: Handler

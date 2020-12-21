@@ -1,5 +1,5 @@
 import emojis from '@/emojis.json'
-import { BaseCommand, Command, HelpInfo } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 import config from '@/config.json'
 import { MessageEmbed, MessageReaction, Message } from 'discord.js'
 

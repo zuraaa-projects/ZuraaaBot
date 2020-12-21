@@ -1,4 +1,4 @@
-import { BaseCommand, Command, HelpInfo, HelpData } from '../../modules/handler'
+import { BaseCommand, Command, HelpInfo, HelpData } from '@modules/handler'
 import { EmbedFieldData, Message, MessageEmbed } from 'discord.js'
 import config from '@/config.json'
 import emojis from '@/emojis.json'

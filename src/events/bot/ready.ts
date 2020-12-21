@@ -1,5 +1,5 @@
-import zuraaa from '@/src'
-import ZuraaaApi from '../../modules/api/zuraaaapi'
+import zuraaa from '@bot'
+import ZuraaaApi from '@modules/api/zuraaaapi'
 import config from '@/config.json'
 import { DiscordAPIError, Guild, GuildMember, Role } from 'discord.js'
 
