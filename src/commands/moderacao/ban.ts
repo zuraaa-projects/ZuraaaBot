@@ -31,6 +31,7 @@ class Ban extends BaseCommand {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(emojis.error.name + ' | Membro não pode ser banido.')
+      )
     }
         
     let reason = 'Sem motivo informado.'
