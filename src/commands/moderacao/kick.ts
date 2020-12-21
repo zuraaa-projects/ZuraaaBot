@@ -21,14 +21,17 @@ class Kick extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Não encontrei o membro.')
+        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
       )
     }
     const member = this.msg.guild?.member(user)
+    if (member === null || member === undefined) {
+      return
+    }
     if (!member.kickable) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Membro não pode ser expulso.')
+        .setTitle(emojis.error.name + ' | Este Membro não pode ser expulso.')
       )
     }
     let reason = 'Sem motivo informado.'
@@ -36,12 +39,10 @@ class Kick extends BaseCommand {
       reason = this.args.slice(1).join(' ')
     }
 
-    if (member !== null && member !== undefined) {
-      member.kick(reason)
-        .catch(console.error)
-        .then(async () => await this.msg.react(emojis.ok.id))
-        .catch(console.error)
-    }
+    member.kick(reason)
+      .catch(console.error)
+      .then(async () => await this.msg.react(emojis.ok.id))
+      .catch(console.error)
   }
 }
 

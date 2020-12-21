@@ -21,16 +21,20 @@ class Ban extends BaseCommand {
     if (user === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Membro não pode ser encontrado.')
+        .setTitle(emojis.error.name + ' | Não encontrei o membro especificado :(')
       )
     }
 
     const member = this.msg.guild?.member(user)
 
+    if (member === null || member === undefined) {
+      return
+    }
+
     if (!member.bannable) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(emojis.error.name + ' | Membro não pode ser banido.')
+        .setTitle(emojis.error.name + ' | Este Membro não pode ser banido.')
       )
     }
 
@@ -39,14 +43,12 @@ class Ban extends BaseCommand {
       reason = this.args.slice(1).join(' ')
     }
 
-    if (member !== null && member !== undefined) {
-      member.ban({
-        reason: reason
-      })
-        .catch(console.error)
-        .then(async () => await this.msg.react(emojis.ok.id))
-        .catch(console.error)
-    }
+    member.ban({
+      reason: reason
+    })
+      .catch(console.error)
+      .then(async () => await this.msg.react(emojis.ok.id))
+      .catch(console.error)
   }
 }
 
