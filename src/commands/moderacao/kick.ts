@@ -32,7 +32,7 @@ class Kick extends BaseCommand {
         .setColor('RED')
         .setTitle(emojis.error.name + ' | Membro não pode ser expulso.')
       )
-    ]
+    }
         
     let reason = 'Sem motivo informado.'
     if (this.args.slice(1).join(' ') !== '') {
