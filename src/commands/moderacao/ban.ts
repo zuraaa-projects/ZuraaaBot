@@ -25,11 +25,19 @@ class Ban extends BaseCommand {
       )
     }
 
+    const member = this.msg.guild?.member(user)
+
+    if (!member.bannable) {
+      return this.msg.channel.send(new MessageEmbed()
+        .setColor('RED')
+        .setTitle(emojis.error.name + ' | Membro não pode ser banido.')
+      )
+    }
+
     let reason = 'Sem motivo informado.'
     if (this.args.slice(1).join(' ') !== '') {
       reason = this.args.slice(1).join(' ')
     }
-    const member = this.msg.guild?.member(user)
 
     if (member !== null && member !== undefined) {
       member.ban({
