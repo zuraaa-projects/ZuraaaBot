@@ -13,7 +13,7 @@ zuraaa.client.on('ready', () => {
   setInterval(() => {
     updateTop()
       .catch(console.error)
-  }, 30000)
+  }, 18e5)
   console.log(zuraaa.client.user?.username as string + ' se encontra online!')
 })
 
