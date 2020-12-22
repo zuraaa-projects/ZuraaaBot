@@ -150,7 +150,7 @@ class Form extends BaseCommand {
                       endForm(channel, username, type, formID, 'cancelado')
                     } else if (checked === 'LOLI') {
                       channel.send('Formulário sendo Cancelado...')
-                        .then(async () => await channel.send(['Você não deveria estar utilizando discord... :eyes:', 'O TOS do discord exisge que você tenha mais de 13 anos para utilizar os serviços de comunidação do discord']))
+                        .then(async () => await channel.send(['Você não deveria estar utilizando Discord... :eyes:', 'O TOS exige que você tenha pelo menos 13 anos para utilizar os serviços do Discord!', 'Logo você não pode se candidatar ao cargo e muito menos utilizar o Discord']))
                         .catch(console.error)
                       endForm(channel, username, type, formID, 'LOLI DETECTADA!')
                     } else {
