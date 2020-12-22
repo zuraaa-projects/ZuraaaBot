@@ -1,7 +1,7 @@
 {
     "name": "zuraaa-bot",
-    "version": "0.1.1",
-    "description": "Bot para bot lists",
+    "version": "1.0.0",
+    "description": "Bot oficial do Zuraaa!",
     "main": "src/index.ts",
     "scripts": {
         "start": "ts-node -r tsconfig-paths/register .",

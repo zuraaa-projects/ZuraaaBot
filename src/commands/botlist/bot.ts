@@ -1,6 +1,7 @@
 import { MessageEmbed, Message } from 'discord.js'
 import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 import config from '@/config.json'
+import emojis from '@/emojis.json'
 import Tags from '@modules/utils/botlist/tags'
 import ZuraaaApi from '@modules/api/zuraaaapi'
 
@@ -17,7 +18,7 @@ class Bot extends BaseCommand {
     if (mentionedBot === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle('Você precisa mencionar um bot ou mandar o ID do bot.')
+        .setTitle(`${emojis.error.name} | Você precisa mencionar um bot ou mandar o ID do bot.`)
       )
     }
 
@@ -75,7 +76,7 @@ class Bot extends BaseCommand {
     }).catch(async () => {
       return await this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle('O bot não pode ser encontrado.')
+        .setTitle(`${emojis.error.name} | O bot não pode ser encontrado.`)
       )
     })
   }
