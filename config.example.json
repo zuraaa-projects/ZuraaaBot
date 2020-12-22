@@ -1,15 +1,16 @@
 {
     "api": {
         "zuraaa": {
-          "url": "https://zuraaa.com/api/",
-          "secret": ""
+            "url": "https://zuraaa.com/api/",
+            "secret": ""
         }
     },
-    
     "bot": {
         "token": "BotToken",
         "prefix": "Prefix",
-        "owner": ["OwnerID (WIP)"],
+        "owner": [
+            "OwnerID (WIP)"
+        ],
         "primaryColor": "color for embeds",
         "guilds": {
             "main": {
@@ -22,7 +23,10 @@
                 "channels": {
                     "wellcome": "wellcome channel",
                     "modlog": "mod logs channel",
-                    "upDownChannels": ["channel of suggestion", "another channel with this feature."],
+                    "upDownChannels": [
+                        "channel of suggestion",
+                        "another channel with this feature."
+                    ],
                     "starboard": "channel of starboard"
                 },
                 "staffroleid": {
@@ -32,8 +36,8 @@
                 },
                 "otherroles": {
                     "mute": "mute role id",
-                    "topbots": "top bots role id",
-                    "topbotdevs": "top bots devs role id"
+                    "topbots": "top_bots role id",
+                    "topbotdevs": "top_devs role id"
                 }
             },
             "bottest": {
