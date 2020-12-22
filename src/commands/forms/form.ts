@@ -107,6 +107,11 @@ class Form extends BaseCommand {
             id: mod,
             deny: ['VIEW_CHANNEL', 'SEND_MESSAGES'],
             type: 'role'
+          },
+          {
+            id: this.zuraaa.client.user?.id as string,
+            allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'],
+            type: 'member'
           }
         ]
       })
