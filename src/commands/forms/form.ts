@@ -64,8 +64,8 @@ class Form extends BaseCommand {
         {
           text: 'Porquê quer se tornar verificador?',
           check (input) {
-            if (input.content.length > 100) {
-              return 'Você fala muito ein rapaz? Escreva até no máximo 100 caracteres por favor!'
+            if (input.content.length > 200) {
+              return 'Você fala muito ein rapaz? Escreva até no máximo 200 caracteres por favor!'
             }
             return 'OK'
           }
@@ -164,7 +164,7 @@ class Form extends BaseCommand {
                           formSend()
                             .catch(console.error)
                         } else {
-                          channel.send([`A pergunta "${question.text}" está reclamando: ${checked}`, 'Tente Novamente!'])
+                          channel.send([`"${question.text}" - Erro: \`\`${checked}\`\``, 'Tente Novamente!'])
                             .then(async () => await formSend())
                             .catch(console.error)
                         }
