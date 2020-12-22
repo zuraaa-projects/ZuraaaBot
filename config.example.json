@@ -27,7 +27,9 @@
                         "channel of suggestion",
                         "another channel with this feature."
                     ],
-                    "starboard": "channel of starboard"
+                    "starboard": "channel of starboard",
+                    "formlog": "form logs channel",
+                    "forms": "channel for send all forms"
                 },
                 "staffroleid": {
                     "mod": "mod role id",
