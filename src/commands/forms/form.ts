@@ -204,7 +204,7 @@ class Form extends BaseCommand {
         const filterOne = (reaction: MessageReaction, user: GuildMember): boolean =>
           user.id === member.id && reaction.emoji.id === emojis.numbers.one.id
 
-        const collectorOne = message.createReactionCollector(filterOne, { time: 1000 * 60 })
+        const collectorOne = message.createReactionCollector(filterOne, { time: 1000 * 60, max: 1 })
         collectorOne.on('collect', () => {
           createForm('verificador', questionsVerificador)
         })
