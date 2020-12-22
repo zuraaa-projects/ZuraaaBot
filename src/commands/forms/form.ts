@@ -14,6 +14,7 @@ interface Question {
 
 @Command('form')
 @HelpInfo({
+  visible: false,
   module: 'Forms',
   description: 'Se alista para fazer parte de nossa Staff em algum cargo',
   usage: ['', '{cargo desejado}']
