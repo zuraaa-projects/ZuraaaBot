@@ -8,7 +8,6 @@ import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 import moment from 'moment'
 
 interface Question {
-  type: 'string' | 'number' | undefined
   text: string
   check: (input: Message) => string
 }
@@ -32,7 +31,6 @@ class Form extends BaseCommand {
     }
     const defaultQuestions: Question[] = [
       {
-        type: 'number',
         text: 'Qual sua idade?',
         check (input) {
           const num = Number(input.content)
@@ -46,7 +44,6 @@ class Form extends BaseCommand {
         }
       },
       {
-        type: 'string',
         text: 'Qual seu horário disponível? (modelo: HH:mm - HH:mm)',
         check (input) {
           if (moment(input.content, 'HH:mm - HH:mm', true).isValid()) {
@@ -61,7 +58,6 @@ class Form extends BaseCommand {
     const questionsVerificador: Question[] = [
       ...defaultQuestions,
       {
-        type: 'string',
         text: 'Porquê quer se tornar verificador?',
         check (input) {
           if (input.content.length > 100) {
