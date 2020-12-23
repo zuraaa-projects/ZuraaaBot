@@ -30,7 +30,7 @@
     },
     "homepage": "https://github.com/zuraaa-projects/ZuraaaBot#readme",
     "dependencies": {
-        "axios": "^0.21.0",
+        "axios": "^0.21.1",
         "discord.js": "^12.3.1",
         "glob": "^7.1.6",
         "lodash": "^4.17.20",
