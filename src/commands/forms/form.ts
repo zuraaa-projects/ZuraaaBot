@@ -22,7 +22,7 @@ interface Question {
 class Form extends BaseCommand {
   async execute (): Promise<void> {
     if (this.msg.author.id !== '367425061122211843') {
-      return await this.msg.react(emojis.error.id)
+      await this.msg.react(emojis.error.id)
     }
 
     const generateUUID = (): string => {
