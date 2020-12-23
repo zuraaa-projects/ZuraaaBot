@@ -24,7 +24,7 @@ class Form extends BaseCommand {
     if (this.msg.author.id !== '367425061122211843') {
       return await this.msg.react(emojis.error.id)
     }
-    
+
     const generateUUID = (): string => {
       let dateTime = new Date().getTime()
       const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, substring => {
