@@ -23,9 +23,11 @@ function selfMention (msg: Message): void {
   if (zuraaa.client.user === null) {
     return
   }
+  
+  const mentionRegex = RegExp(`^<@!?${zuraaa.client.user.id}>$`);
 
-  const selfMention = msg.mentions.users.get(zuraaa.client.user.id)
-  if (selfMention !== undefined && msg.content.length < zuraaa.client.user.id.length + 5) {
+  //const selfMention = msg.mentions.users.get(zuraaa.client.user.id)
+  if (msg.content.match(mentionRegex)) {
     const prefix: string = config.bot.prefix
     msg.channel.send(new MessageEmbed()
       .setColor(config.bot.primaryColor)
