@@ -52,7 +52,7 @@ function memberLog (member: GuildMember): void {
     .addFields([
       {
         name: 'Criação da conta:',
-        value: `${createdAt.format('LLLL')}\n\`${createdAt.toNow()}\``,
+        value: `${createdAt.format('LLLL')}\n\`${createdAt.fromNow()}\``,
         inline: true
       },
       {
