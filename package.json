@@ -37,7 +37,7 @@
         "moment": "^2.27.0",
         "reflect-metadata": "^0.1.13",
         "sequelize": "^6.3.5",
-        "sqlite3": "^5.0.0",
+        "sqlite3": "^5.0.1",
         "tsconfig-paths": "^3.9.0"
     },
     "devDependencies": {
