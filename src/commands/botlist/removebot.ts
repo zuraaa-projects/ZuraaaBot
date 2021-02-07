@@ -17,8 +17,8 @@ class RemoveBot extends BaseCommand {
       this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(`${emojis.error.name} | Me informe o bot.`)
-      )
-      return 
+      ).catch(console.error)
+      return
     }
 
     const api = new ZuraaaApi()
