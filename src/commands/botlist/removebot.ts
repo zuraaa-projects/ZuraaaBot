@@ -13,6 +13,8 @@ class RemoveBot extends BaseCommand {
   execute (): void {
     const botId = this.msg.mentions.users.first()?.id ?? this.args[0]
 
+    if(!botId) return this.msg.channel.send({ embed: { color: "RED", title: `${emojis.error
+name} | Não achei nenhum bot cabeça de rola` }})
     const api = new ZuraaaApi()
 
     api.removeBot(botId, this.msg.author.id).then(result => {
