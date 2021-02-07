@@ -28,8 +28,12 @@ class ZuraaaApi {
     return (await this.api.get('users/' + id + '/bots')).data
   }
 
-  async getUser (id: string): Promise<User> {
-    return (await this.api.get('users/' + id)).data
+  async getUser (id: string): Promise<User | undefined> {
+    try {
+      return (await this.api.get('users/' + id)).data
+    } catch {
+      return undefined
+    }
   }
 
   private async getUserToken (id: string): Promise<Auth> {

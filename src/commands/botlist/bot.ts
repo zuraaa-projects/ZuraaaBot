@@ -24,6 +24,12 @@ class Bot extends BaseCommand {
 
     const api = new ZuraaaApi()
     api.getBot(mentionedBot).then(async botfinded => {
+      if (botfinded === undefined) {
+        return await this.msg.channel.send(new MessageEmbed()
+          .setColor('RED')
+          .setTitle(`${emojis.error.name} | O bot não pode ser encontrado.`)
+        )
+      }
       const botDiscord = await this.zuraaa.client.users.fetch(botfinded._id)
 
       let botowner = '`' + (await this.zuraaa.client.users.fetch(botfinded.owner)).tag + '`'
@@ -73,11 +79,11 @@ class Bot extends BaseCommand {
           }
         ]))
         .catch(console.error)
-    }).catch(async () => {
-      return await this.msg.channel.send(new MessageEmbed()
+    }).catch(async (error) => {
+      console.error(error)
+      await this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
-        .setTitle(`${emojis.error.name} | O bot não pode ser encontrado.`)
-      )
+        .setTitle(`${emojis.error.name} | Erro interno na aplicação.`))
     })
   }
 }
