@@ -13,13 +13,13 @@ class RemoveBot extends BaseCommand {
   execute (): void {
     const botId = this.msg.mentions.users.first()?.id ?? this.args[0]
 
-    if(!botId) {
+    if (botId === undefined) {
       return this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(`${emojis.error.name} | Me informe o bot.`)
       )
-    } 
-    
+    }
+
     const api = new ZuraaaApi()
 
     api.removeBot(botId, this.msg.author.id).then(result => {
