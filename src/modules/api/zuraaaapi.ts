@@ -17,12 +17,11 @@ class ZuraaaApi {
   }
 
   async getBot (id: string): Promise<Bot | undefined> {
-	try {
-	  return (await this.api.get('bots/' + id)).data
-	}
-	catch {
-	  return undefined;
-	}
+    try {
+      return (await this.api.get('bots/' + id)).data
+    } catch {
+      return undefined
+    }
   }
 
   async getTopBots (): Promise<Bot[]> {
