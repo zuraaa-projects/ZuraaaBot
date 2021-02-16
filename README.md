@@ -34,7 +34,7 @@ npm start
 
 ### Suporte
 
-- Suporte feito através do nosso [Discord](https://discord.gg/EShHzNtVAb)
+- Suporte feito através do nosso [Discord](https://www.zuraaa.com/discord)
 
 ### Fair Use
 
