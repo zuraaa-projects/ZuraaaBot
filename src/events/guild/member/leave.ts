@@ -3,6 +3,7 @@ import { GuildMember, MessageEmbed, TextChannel } from 'discord.js'
 import modlogs from '@modules/utils/bot/modlogs'
 import config from '@/config.json'
 import ZuraaaApi from '@modules/api/zuraaaapi'
+import formatError from '@/src/modules/utils/formatError'
 
 zuraaa.client.on('guildMemberRemove', member => {
   if (member.guild.id !== config.bot.guilds.main.id) {
@@ -25,7 +26,13 @@ function removeBots (member: GuildMember): void {
       }
     }
   })
-    .catch(console.error)
+    .catch(error => {
+      if (error.response.status === 404) {
+        return
+      }
+
+      formatError('Houve um erro ao requisitar os bots do usuário de ID: ' + member.id, error)
+    })
 }
 
 function sendMemberLog (member: GuildMember): void {

@@ -3,6 +3,7 @@ import config from '@/config.json'
 import { MessageEmbed, GuildMember, TextChannel } from 'discord.js'
 import moment from 'moment'
 import ZuraaaApi from '@modules/api/zuraaaapi'
+import formatError from '@/src/modules/utils/formatError'
 
 zuraaa.client.on('guildMemberAdd', member => {
   autoRole(member)
@@ -27,7 +28,13 @@ function autoRole (member: GuildMember): void {
             .catch(console.error)
         }
       })
-        .catch(console.error)
+        .catch(error => {
+          if (error.response.status === 404) {
+            return
+          }
+
+          formatError('Houve um erro ao requisitar os bots do usuário de ID: ' + member.id, error)
+        })
 
       member.roles.add(guilds.main.autorole.member)
         .catch(console.error)

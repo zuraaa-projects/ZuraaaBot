@@ -2,6 +2,7 @@ import zuraaa from '@bot'
 import ZuraaaApi from '@modules/api/zuraaaapi'
 import config from '@/config.json'
 import { DiscordAPIError, Guild, GuildMember, Role } from 'discord.js'
+import formatError from '@/src/modules/utils/formatError'
 
 const api = new ZuraaaApi()
 
@@ -9,10 +10,14 @@ zuraaa.client.on('ready', () => {
   setStatus()
   setInterval(setStatus, 300000)
   updateTop()
-    .catch(console.error)
+    .catch((error) => {
+      formatError('Houve um erro ao requisitar os bots mais votados', error)
+    })
   setInterval(() => {
     updateTop()
-      .catch(console.error)
+      .catch((error) => {
+        formatError('Houve um erro ao requisitar os bots mais votados', error)
+      })
   }, 18e5)
   console.log(zuraaa.client.user?.username as string + ' se encontra online!')
 })
@@ -22,7 +27,9 @@ function setStatus (): void {
     zuraaa.client.user?.setActivity('Todos os ' + count.bots_count + ' bots que estão na botlist 😋', { type: 'WATCHING' })
       .catch(console.error)
   })
-    .catch(console.error)
+    .catch((error) => {
+      formatError('Houve um erro ao requisitar a contagem de bots', error)
+    })
 }
 
 async function updateTop (): Promise<void> {

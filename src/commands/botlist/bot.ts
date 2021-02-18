@@ -79,8 +79,7 @@ class Bot extends BaseCommand {
           }
         ]))
         .catch(console.error)
-    }).catch(async (error) => {
-      console.error(error)
+    }).catch(async () => {
       await this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(`${emojis.error.name} | Erro interno na aplicação.`))

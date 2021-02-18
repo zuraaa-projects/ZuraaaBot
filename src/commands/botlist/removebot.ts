@@ -34,8 +34,7 @@ class RemoveBot extends BaseCommand {
         .catch(console.error)
       this.msg.react(emojis.ok.id)
         .catch(console.error)
-    }).catch(err => {
-      console.error(err)
+    }).catch(() => {
       this.msg.react(emojis.error.id)
         .catch(console.error)
     })
