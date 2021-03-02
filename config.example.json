@@ -23,6 +23,7 @@
                 "channels": {
                     "wellcome": "wellcome channel",
                     "modlog": "mod logs channel",
+                    "sitelog": "channel of sitelog",
                     "upDownChannels": [
                         "channel of suggestion",
                         "another channel with this feature."
