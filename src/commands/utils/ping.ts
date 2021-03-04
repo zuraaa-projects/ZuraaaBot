@@ -4,7 +4,7 @@ import { BaseCommand, Command, HelpInfo } from '@modules/handler'
 @HelpInfo({
   module: 'Utils',
   description: 'Mostra a latencia do bot',
-  usage: ['z.ping',]
+  usage: ['z.ping']
 })
 class Ping extends BaseCommand {
   execute (): void { 
