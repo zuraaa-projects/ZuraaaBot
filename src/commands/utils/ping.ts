@@ -7,7 +7,7 @@ import { BaseCommand, Command, HelpInfo } from '@modules/handler'
   usage: ['z.ping']
 })
 class Ping extends BaseCommand {
-  execute (): void { 
+  execute () { 
 this.msg.channel.send(`Ping: ${Date.now() - this.msg.createdTimestamp}ms\nWebSocket:  ${zuraaa.client.ws.ping}ms`)
   }
 }
