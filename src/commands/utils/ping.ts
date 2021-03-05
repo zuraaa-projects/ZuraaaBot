@@ -14,7 +14,7 @@ class Ping extends BaseCommand {
     this.msg.channel.send(
       new MessageEmbed()
         .setColor(config.bot.primaryColor)
-        .addField('Ping', `${Date.now() - this.msg.createdTimestamp}ms`)
+        .addField('Ping', `${0 - (Date.now() - this.msg.createdTimestamp)}ms`)
         .addField('WebSocket', `${Math.round(zuraaa.client.ws.ping)}ms`)
     ).catch(console.error)
   }
