@@ -15,7 +15,7 @@ class Ping extends BaseCommand {
       new MessageEmbed()
         .setColor(config.bot.primaryColor)
         .addField('Ping', `${Date.now() - this.msg.createdTimestamp}ms`)
-        .addField('WebSocket', `${zuraaa.client.ws.ping}ms` )
+        .addField('WebSocket', `${zuraaa.client.ws.ping}ms`)
     ).catch(console.error)
   }
 }
