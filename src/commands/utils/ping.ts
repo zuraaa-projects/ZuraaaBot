@@ -21,3 +21,4 @@ class Ping extends BaseCommand {
 }
 
 export default Ping
+
