@@ -54,8 +54,7 @@ class ZuraaaApi {
 
   async resetVotes (requestId: string): Promise<boolean> {
     const token = (await this.getUserToken(requestId)).access_token
-    console.log(token)
-    const result = await this.api.put('/bots?type=resetVotes', null, {
+    const result = await this.api.patch('/bots?type=resetVotes', null, {
       headers: {
         Authorization: 'Bearer ' + token
       }
