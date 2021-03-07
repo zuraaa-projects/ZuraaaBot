@@ -15,10 +15,10 @@ class RemoveBot extends BaseCommand {
     const botId = this.msg.mentions.users.first()?.id ?? this.args[0]
 
     if (botId === undefined) {
-      this.msg.channel.send(new MessageEmbed()
+      await this.msg.channel.send(new MessageEmbed()
         .setColor('RED')
         .setTitle(`${emojis.error.name} | Me informe o bot.`)
-      ).catch(console.error)
+      )
       return
     }
 
@@ -33,27 +33,28 @@ class RemoveBot extends BaseCommand {
         )
       }
 
-      let reason = 'Sem motivo informado.'
-      if (this.args.slice(1).join(' ') !== '') {
-        reason = this.args.slice(1).join(' ')
-      }
+      const guild = await this.zuraaa.client.guilds.fetch(config.bot.guilds.main.id)
 
-      this.msg.guild?.member(botId)?.kick()
+      guild.member(botId)?.kick()
         .catch(console.error)
       this.msg.react(emojis.ok.id)
         .catch(console.error)
 
-      const embed = new MessageEmbed()
-        .setColor('GREEN')
-        .setTitle('Sucesso!')
-        .setFooter(`Removido por: ${this.msg.author.username}#${this.msg.author.discriminator}`)
-        .setDescription(`O bot \`${bot?.username as string}#${bot?.discriminator as string}\` foi removido da Botlist pelo seguinte motivo: \`${reason}\``)
+      if (bot !== undefined && bot.owner !== this.msg.author.id) {
+        const reasonArg = this.args.slice(1).join(' ')
+        const reason = reasonArg !== '' ? reasonArg : 'Sem motivo informado.'
 
-      const siteLogs = this.msg.guild?.channels.cache.get(config.bot.guilds.main.channels.sitelog) as TextChannel
-      const ownerDM = this.msg.guild?.members.cache.get(bot?.owner as string)
+        const embed = new MessageEmbed()
+          .setColor('GREEN')
+          .setTitle('Bot removido')
+          .setFooter(`Removido por: ${this.msg.author.tag}`)
+          .setDescription(`O bot \`${bot.username}#${bot.discriminator}\` foi removido da Botlist pelo seguinte motivo: \`${reason}\``)
+        const siteLogs = guild.channels.resolve(config.bot.guilds.main.channels.sitelog) as TextChannel
+        const ownerDM = guild.member(bot.owner)
 
-      await siteLogs.send(embed)
-      await ownerDM?.send(embed)
+        await siteLogs?.send(embed)
+        await ownerDM?.send(embed)
+      }
     }).catch(() => {
       this.msg.react(emojis.error.id)
         .catch(console.error)
