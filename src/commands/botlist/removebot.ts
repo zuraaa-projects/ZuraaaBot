@@ -34,16 +34,15 @@ class RemoveBot extends BaseCommand {
       }
 
       const guild = await this.zuraaa.client.guilds.fetch(config.bot.guilds.main.id)
+      const reasonArg = this.args.slice(1).join(' ')
+      const reason = reasonArg !== '' ? reasonArg : 'Sem motivo informado.'
 
-      guild.member(botId)?.kick()
+      guild.member(botId)?.kick(reason)
         .catch(console.error)
       this.msg.react(emojis.ok.id)
         .catch(console.error)
 
       if (bot !== undefined && bot.owner !== this.msg.author.id) {
-        const reasonArg = this.args.slice(1).join(' ')
-        const reason = reasonArg !== '' ? reasonArg : 'Sem motivo informado.'
-
         const embed = new MessageEmbed()
           .setColor('GREEN')
           .setTitle('Bot removido')
