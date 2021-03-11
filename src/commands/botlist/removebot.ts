@@ -1,7 +1,7 @@
 import emojis from '@/emojis.json'
 import config from '@/config.json'
 import { BaseCommand, Command, HelpInfo } from '@modules/handler'
-import { MessageEmbed, TextChannel } from 'discord.js'
+import { MessageEmbed, TextChannel, User } from 'discord.js'
 import ZuraaaApi from '@modules/api/zuraaaapi'
 
 @Command('removebot', 'deletebot', 'rbot', 'dbot')
@@ -49,10 +49,16 @@ class RemoveBot extends BaseCommand {
           .setFooter(`Removido por: ${this.msg.author.tag}`)
           .setDescription(`O bot \`${bot.username}#${bot.discriminator}\` foi removido da Botlist pelo seguinte motivo: \`${reason}\``)
         const siteLogs = guild.channels.resolve(config.bot.guilds.main.channels.sitelog) as TextChannel
-        const ownerDM = guild.member(bot.owner)
+        const owner = guild.member(bot.owner)
 
         await siteLogs?.send(embed)
-        await ownerDM?.send(embed)
+        await owner?.send(embed)
+
+        for (const otherOwnerID of bot.details.otherOwners) {
+          const otherOwner = guild.member(otherOwnerID)
+          await otherOwner?.send(embed)
+        }
+        return
       }
     }).catch(() => {
       this.msg.react(emojis.error.id)
