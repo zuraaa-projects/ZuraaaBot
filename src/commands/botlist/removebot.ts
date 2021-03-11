@@ -1,7 +1,7 @@
 import emojis from '@/emojis.json'
 import config from '@/config.json'
 import { BaseCommand, Command, HelpInfo } from '@modules/handler'
-import { MessageEmbed, TextChannel, User } from 'discord.js'
+import { MessageEmbed, TextChannel } from 'discord.js'
 import ZuraaaApi from '@modules/api/zuraaaapi'
 
 @Command('removebot', 'deletebot', 'rbot', 'dbot')
@@ -58,7 +58,6 @@ class RemoveBot extends BaseCommand {
           const otherOwner = guild.member(otherOwnerID)
           await otherOwner?.send(embed)
         }
-        return
       }
     }).catch(() => {
       this.msg.react(emojis.error.id)
