@@ -51,15 +51,17 @@ class RemoveBot extends BaseCommand {
         const siteLogs = guild.channels.resolve(config.bot.guilds.main.channels.sitelog) as TextChannel
         const owner = guild.member(bot.owner)
 
-        await siteLogs?.send(embed)
-        await owner?.send(embed)
+        siteLogs?.send(embed).catch(e => console.warn('nao deu pra mandar no logs', e))
+
+        owner?.send(embed).catch(() => console.warn('bloqueou a mensagem', owner?.id))
 
         for (const otherOwnerID of bot.details.otherOwners) {
           const otherOwner = guild.member(otherOwnerID)
-          await otherOwner?.send(embed)
+          otherOwner?.send(embed).catch(() => console.warn('bloqueou a mensagem outro', otherOwner?.id))
         }
       }
-    }).catch(() => {
+    }).catch((e) => {
+      console.log('Error during removebot', e)
       this.msg.react(emojis.error.id)
         .catch(console.error)
     })
