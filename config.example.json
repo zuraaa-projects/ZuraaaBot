@@ -11,40 +11,40 @@
         "owner": [
             "OwnerID (WIP)"
         ],
-        "primaryColor": "color for embeds",
+        "primaryColor": "cor para as embeds",
         "guilds": {
             "main": {
                 "id": "guild",
                 "autorole": {
-                    "botrole": "role for bot",
-                    "member": "role for member",
-                    "dev": "role for dev"
+                    "botrole": "bot role",
+                    "member": "member role",
+                    "dev": "developer role"
                 },
                 "channels": {
-                    "wellcome": "wellcome channel",
-                    "modlog": "mod logs channel",
-                    "sitelog": "channel of sitelog",
+                    "welcome": "canal de boas vindas",
+                    "modlog": "canal de mod logs",
+                    "sitelog": "canal de site logs",
                     "upDownChannels": [
-                        "channel of suggestion",
-                        "another channel with this feature."
+                        "canal de sugestões",
+                        "outros canais com essa feature"
                     ],
-                    "starboard": "channel of starboard",
+                    "starboard": "starboard channel",
                     "formlog": "form logs channel",
-                    "forms": "channel for send all forms"
+                    "forms": "forms channel"
                 },
                 "staffroleid": {
-                    "mod": "mod role id",
-                    "adm": "adm role id",
-                    "checker": "checker role id"
+                    "mod": "mod role",
+                    "adm": "adm role",
+                    "checker": "checker role"
                 },
                 "otherroles": {
-                    "mute": "mute role id",
-                    "topbots": "top_bots role id",
-                    "topbotdevs": "top_devs role id"
+                    "mute": "mute role",
+                    "topbots": "top_bots role",
+                    "topbotdevs": "top_devs role"
                 }
             },
             "bottest": {
-                "id": "guild for bot test",
+                "id": "id do servidor que os bots são testados",
                 "autorole": {
                     "botrole": "bot role"
                 }

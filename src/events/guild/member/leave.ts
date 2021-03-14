@@ -36,7 +36,7 @@ function removeBots (member: GuildMember): void {
 }
 
 function sendMemberLog (member: GuildMember): void {
-  const channel = member.guild.channels.cache.get(config.bot.guilds.main.channels.wellcome) as TextChannel
+  const channel = member.guild.channels.cache.get(config.bot.guilds.main.channels.welcome) as TextChannel
   channel.send(new MessageEmbed()
     .setColor('#f20c23')
     .setTimestamp(new Date())
