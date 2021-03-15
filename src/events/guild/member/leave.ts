@@ -40,7 +40,7 @@ function sendMemberLog (member: GuildMember): void {
   channel.send(new MessageEmbed()
     .setColor('#f20c23')
     .setTimestamp(new Date())
-    .setTitle(`**${member.user.username} #${member.user.discriminator}**`)
+    .setTitle(`**${member.user.username}#${member.user.discriminator}**`)
     .setFooter('ID: ' + member.id)
     .setThumbnail(member.user.displayAvatarURL({
       dynamic: true
