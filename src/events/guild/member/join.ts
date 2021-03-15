@@ -52,7 +52,7 @@ function memberLog (member: GuildMember): void {
   channel.send(new MessageEmbed()
     .setColor('#3ecc1f')
     .setTimestamp(member.joinedAt as Date)
-    .setTitle(`**${member.user.username}#${member.user.discriminator}**`)
+    .setTitle(`**${member.user.tag**`)
     .setThumbnail(member.user.displayAvatarURL({
       dynamic: true
     }))
