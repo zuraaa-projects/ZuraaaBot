@@ -41,7 +41,7 @@ function sendMemberLog (member: GuildMember): void {
     .setColor('#f20c23')
     .setTimestamp(new Date())
     .setTitle(`**${member.user.tag}**`)
-    .setFooter('ID: ' + member.id)
+    .setFooter(`ID: ${member.id}`)
     .setThumbnail(member.user.displayAvatarURL({
       dynamic: true
     }))
