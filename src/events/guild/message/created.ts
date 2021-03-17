@@ -16,6 +16,8 @@ function reactSuggestion (msg: Message): void {
       .catch(console.error)
     msg.react('👎')
       .catch(console.error)
+    msg.react('❓')
+      .catch(console.error)
   }
 }
 
