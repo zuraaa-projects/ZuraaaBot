@@ -73,7 +73,7 @@ function memberLog (member: GuildMember): void {
         inline: true
       }
     ])
-    .setFooter(member.id)
+    .setFooter(`ID: ${member.id}`)
   )
     .catch(console.error)
 }
