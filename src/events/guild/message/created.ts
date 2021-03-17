@@ -12,6 +12,9 @@ function reactSuggestion (msg: Message): void {
     if (msg.content.startsWith('>')) {
       return
     }
+    if (msg.reference !== null) {
+      return
+    }
     msg.react('👍')
       .catch(console.error)
     msg.react('👎')
