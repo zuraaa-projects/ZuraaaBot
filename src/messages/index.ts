@@ -1,0 +1,15 @@
+import ZuraaaBot from '../zuraaa-bot'
+import { getUser } from './get-user'
+import rabbit from 'amqplib/callback_api'
+import config from '../../config.json'
+
+export function addQueues (zuraaa: ZuraaaBot): void {
+  rabbit.connect(config.rabbit.url, (err, conn) => {
+    if (err !== undefined && err !== null) {
+      console.error(err)
+
+      throw err
+    }
+    getUser(zuraaa.client, conn)
+  })
+}

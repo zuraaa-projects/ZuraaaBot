@@ -5,6 +5,7 @@ import MostVoted from '@modules/database/models/MostVoted'
 import Role from '@modules/database/models/Role'
 import { Models } from '@modules/database/types'
 import LocalDatabase from '@modules/database/LocalDatabase'
+import { addQueues } from './messages'
 class ZuraaaBot {
   private readonly _client = new Discord.Client()
   private readonly _handler: Handler
@@ -20,6 +21,7 @@ class ZuraaaBot {
     }
     this._models.Role.hasMany(this._models.MostVoted)
     this._models.MostVoted.belongsTo(this._models.Role)
+    addQueues(this)
   }
 
   get client (): Discord.Client {
