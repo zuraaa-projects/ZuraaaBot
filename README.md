@@ -13,6 +13,8 @@ Bot responsável por organizar e auxiliar na botlist [Zuraaa](https://github.com
 
 ## Como usar
 
+**⚠ Esse projeto depende de uma instância do [ZuraaaCore](https://github.com/zuraaa-projects/ZuraaaCore) para funcionar corretamente. ⚠** 
+
 - Primeiro clone o repositório:
 
 ```sh
