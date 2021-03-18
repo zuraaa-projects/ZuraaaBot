@@ -1,4 +1,4 @@
-# Zuraaa! Bot
+# ZuraaaBot
 
 Bot responsável por organizar e auxiliar na botlist [Zuraaa](https://github.com/zuraaa-projects/Zuraaa.com)
 
