@@ -6,9 +6,8 @@ import config from '../../config.json'
 export function addQueues (zuraaa: ZuraaaBot): void {
   rabbit.connect(config.rabbit.url, (err, conn) => {
     if (err !== undefined && err !== null) {
-      console.error(err)
-
-      throw err
+      console.error('Rabbit não encontrado')
+      return
     }
     getUser(zuraaa.client, conn)
   })
