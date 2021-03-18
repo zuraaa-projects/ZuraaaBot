@@ -16,22 +16,20 @@ Bot responsável por organizar e auxiliar na botlist [Zuraaa](https://github.com
 **⚠ Esse projeto depende de uma instância do [ZuraaaCore](https://github.com/zuraaa-projects/ZuraaaCore) para funcionar corretamente. ⚠** 
 
 - Primeiro clone o repositório:
-
 ```sh
-git clone https://github.com/zuraaa-projects/ZuraaaBot.git
+$ git clone https://github.com/zuraaa-projects/ZuraaaBot.git
 ```
 
 - Inicialize as dependências:
-
 ```sh
-npm i
+$ npm i
 ```
 
-- Preencha o arquivo `config.example.json` , e por fim renomeie o mesmo para `config.json`
-- Por fim inicie o projeto
+- Copie o arquivo `config.example.json` e renomeie para `config.json` e preencha os espaços
 
+- Por fim, inicie o projeto
 ```sh
-npm start
+$ npm start
 ```
 
 ### Suporte
