@@ -51,6 +51,7 @@ impl EventHandler for Events {
         embed.description(message);
         if let Err(why) = msg.channel_id.send_message(ctx, |m| m
             .set_embed(embed)
+            .reference_message(&msg)
         )
             .await
         {
