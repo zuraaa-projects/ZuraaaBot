@@ -7,3 +7,4 @@ uploads/
 .vscode/
 yarn-error.log
 local.db
+/out
