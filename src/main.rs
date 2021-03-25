@@ -1,6 +1,7 @@
 mod commands;
 mod events;
 pub mod api;
+pub mod helpers;
 
 use std::env;
 use serenity::Client;

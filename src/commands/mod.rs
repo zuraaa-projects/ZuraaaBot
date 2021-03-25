@@ -1,9 +1,8 @@
-use std::env;
 use serenity::framework::StandardFramework;
+use crate::helpers::get_prefix;
 
 pub fn create_framework() -> StandardFramework {
-    let prefix = env::var("MARI_BOT_PREFIX")
-        .unwrap_or("z.".into());
+    let prefix = get_prefix();
     let framework = StandardFramework::new()
         .configure(|c| c
             .prefix(&prefix[..])
