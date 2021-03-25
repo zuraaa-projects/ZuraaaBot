@@ -2,7 +2,7 @@ pub mod get_types;
 
 use std::env;
 use reqwest::Client;
-use get_types::BotCount;
+use self::get_types::{BotCount, Bot};
 
 pub struct  ZuraaaApi {
     client: Client,
@@ -28,6 +28,17 @@ impl ZuraaaApi {
             .send()
             .await?;
         let response_body = result.json::<BotCount>()
+            .await?;
+        
+        Ok(response_body)
+    }
+
+    pub async fn get_bot(&self, id: u64) -> Result<Bot, reqwest::Error> {
+        let result = self.client.get(format!("{}bots/{}", self.base_url, id))
+            .send()
+            .await?;
+
+        let response_body = result.json::<Bot>()
             .await?;
         
         Ok(response_body)
