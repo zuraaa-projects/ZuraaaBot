@@ -1,10 +1,10 @@
 /node_modules
 /.code
 config.json
-package-lock.json
 ormconfig.json
 uploads/
 .vscode/
 yarn-error.log
 local.db
 /out
+yarn.lock
