@@ -1,7 +1,7 @@
 ﻿{
     "api": {
         "zuraaa": {
-            "url": "https://zuraaa.com/api/",
+            "url": "https://api.zuraaa.com/",
             "secret": ""
         }
     },

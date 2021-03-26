@@ -44,12 +44,38 @@ class ZuraaaApi {
     })).data
   }
 
-  async removeBot (botId: string, requestId: string): Promise<DeleteBot> {
-    return (await this.api.delete('/bots/' + botId, {
-      headers: {
-        Authorization: 'Bearer ' + (await this.getUserToken(requestId)).access_token
+  async removeBot (botId: string, requestId: string, reason: string | null): Promise<DeleteBot> {
+    const auth = await this.getUserToken(requestId)
+
+    const bot = await this.getBot(botId)
+
+    if (bot == null) {
+      return {
+        deleted: false
       }
-    })).data
+    }
+
+    let data: DeleteBot
+
+    if (bot.owner === requestId) {
+      const result = await this.api.delete('/bots/' + botId, {
+        headers: {
+          Authorization: 'Bearer ' + auth.access_token
+        }
+      })
+      data = result.data
+    } else {
+      const result = await this.api.post('/bots/' + botId + '/reason-remove', {
+        reason: reason
+      }, {
+        headers: {
+          Authorization: 'Bearer ' + auth.access_token
+        }
+      })
+      data = result.data
+    }
+
+    return data
   }
 
   async resetVotes (requestId: string): Promise<boolean> {
