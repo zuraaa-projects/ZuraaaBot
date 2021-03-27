@@ -2,17 +2,20 @@ mod commands;
 mod events;
 pub mod api;
 pub mod helpers;
+pub mod configs;
 
-use std::env;
 use serenity::Client;
+use configs::bot_config;
+
+#[allow(dead_code)]
+type UniversalError = Box<dyn std::error::Error>;
 
 #[tokio::main]
 async fn main() {
     dotenv::dotenv()
         .ok();
 
-    let token = env::var("MARI_BOT_TOKEN")
-        .expect("Favor colocar o token do bot na enviroment 'MARI_BOT_TOKEN'");
+    let token = bot_config::get_token();
     
     let mut client = Client::builder(token)
         .framework(commands::create_framework())

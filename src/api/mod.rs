@@ -1,8 +1,9 @@
 pub mod get_types;
+pub mod api_formats;
 
-use std::env;
 use reqwest::Client;
 use self::get_types::{BotCount, Bot};
+use crate::configs::api_config;
 
 pub struct  ZuraaaApi {
     client: Client,
@@ -12,8 +13,7 @@ pub struct  ZuraaaApi {
 
 impl ZuraaaApi {
     pub fn new() -> Self {
-        let url = env::var("MARI_API_URL")
-            .unwrap_or("https://api.zuraaa.com/".into());
+        let url = api_config::get_api_url();
         
         let client = Client::new();
         

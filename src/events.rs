@@ -1,7 +1,8 @@
 use std::time::Duration;
 use serenity::{async_trait, client::{Context, EventHandler}, model::{channel::Message, prelude::{Activity, OnlineStatus, Ready}}};
 use crate::api::{ZuraaaApi, get_types::BotCount};
-use crate::helpers::{base_embed, get_prefix};
+use crate::helpers::base_embed;
+use crate::configs::bot_config::get_prefix;
 
 pub struct Events;
 
@@ -47,7 +48,7 @@ impl EventHandler for Events {
         let final_message = format!("{}help", prefix);
         let message = format!("{}, meu prefixo é `{}`, para ver meus comandos basta usar o comando `{}`!", msg.author.name, prefix, final_message);
         
-        let mut embed = base_embed(&ctx).await;
+        let mut embed = base_embed(&msg);
         embed.description(message);
         if let Err(why) = msg.channel_id.send_message(ctx, |m| m
             .set_embed(embed)
