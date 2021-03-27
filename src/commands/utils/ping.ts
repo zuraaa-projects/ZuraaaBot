@@ -21,7 +21,7 @@ class Ping extends BaseCommand {
           new MessageEmbed()
             .setColor(config.bot.primaryColor)
             .setDescription(
-              `**Ping:** ${(message.editedTimestamp ?? message.createdTimestamp) - this.msg.createdTimestamp}ms\n` +
+              `**Ping:** ${message.createdTimestamp - (this.msg.editedTimestamp ?? this.msg.createdTimestamp)}ms\n` +
               `**WebSocket:** ${zuraaa.client.ws.ping}ms`)
         )
       })
