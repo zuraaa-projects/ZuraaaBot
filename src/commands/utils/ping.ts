@@ -17,11 +17,14 @@ class Ping extends BaseCommand {
           .setColor(config.bot.primaryColor)
           .setTitle('Calculando ping...'))
       .then(async message => {
+        const timestamp = this.msg.editedTimestamp != null && this.msg.editedTimestamp !== 0
+          ? this.msg.editedTimestamp
+          : this.msg.createdTimestamp
         await message.edit(
           new MessageEmbed()
             .setColor(config.bot.primaryColor)
             .setDescription(
-              `**Ping:** ${message.createdTimestamp - (this.msg.editedTimestamp ?? this.msg.createdTimestamp)}ms\n` +
+              `**Ping:** ${message.createdTimestamp - timestamp}ms\n` +
               `**WebSocket:** ${zuraaa.client.ws.ping}ms`)
         )
       })
