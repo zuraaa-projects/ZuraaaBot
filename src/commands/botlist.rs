@@ -1,10 +1,10 @@
 use serenity::{client::Context, framework::standard::{CommandResult, macros::{command, group}}, model::channel::Message};
-use crate::api::{ZuraaaApi, api_formats::owners_to_single_vec};
-use crate::helpers::{get_id_from_mention_or_content, base_embed, get_avatar_url, get_users_tags_from_vec, format_tags};
+use crate::api::{ZuraaaApi, api_formats::{owners_to_single_vec, format_tags}};
+use crate::helpers::{get_id_from_mention_or_content, base_embed, get_avatar_url, get_users_tags_from_vec};
 use crate::configs::api_config;
 
 #[group]
-#[commands(bot)]
+#[commands(bot, userinfo)]
 pub struct BotList;
 
 #[command]
@@ -59,11 +59,68 @@ async fn bot(ctx: &Context, msg: &Message) -> CommandResult {
                     )
                         .await?;
                 },
-                Err(why) => println!("{:?}", why)
+                Err(_) => {
+                    //Erro msg bot not found
+                }
             }
 
         },
-        None => println!("None")
+        None => {
+            //Erro msg id not formated
+        }
     }
+    Ok(())
+}
+
+#[command]
+async fn userinfo(ctx: &Context, msg: &Message) -> CommandResult {
+    let id_user = get_id_from_mention_or_content(msg);
+    match id_user {
+        Some(id) => {
+            let api = ZuraaaApi::new();
+            let user_api_data = api.get_user(id)
+                .await;
+            
+            match user_api_data {
+                Ok(user_data) => {
+                    let mut embed = base_embed(msg);
+                    
+                    let discord_user = ctx.http.get_user(id)
+                    .await?;
+                    
+                    embed.title(&discord_user.tag());
+                    embed.description(&user_data.details.description);
+                    embed.url(format!("{}user/{}", api_config::get_site_url(), &id));
+                    
+                    let bots = api.get_user_bots(&user_data)
+                        .await?;
+                    
+                    let bots_formated = bots
+                        .iter()
+                        .fold(String::new(), |act, new| {
+                            format!("{}\n[{}#{}]({}bots/{})", act, new.username, new.discriminator, api_config::get_site_url(), new.id)
+                        });
+                    embed.field("Bots desenvolvidos:", bots_formated, true);
+                    let avatar = get_avatar_url(&discord_user);
+                    embed.thumbnail(avatar);
+
+                    msg.channel_id.send_message(ctx, |m| m
+                        .set_embed(embed)
+                        .reference_message(msg)
+                    )
+                        .await?;
+                },
+                Err(why) => {
+                    println!("Morri aki: {:?}", why)
+                    //Erro user not found
+                }
+            }
+        },
+        None => {
+            println!("Id morto");
+            //Erro msg id not formated
+        }
+    }
+
     Ok(())
 }

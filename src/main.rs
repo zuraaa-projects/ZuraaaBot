@@ -23,8 +23,9 @@ async fn main() {
         .await
         .expect("Problema ao criar o client do Serenity");
 
-    client
-        .start()
-        .await
-        .expect("Problemas ao iniciar o bot.");  
+    if let Err(why) = client
+    .start()
+    .await {
+        println!("Ocorreu um erro desconhecido: {:?}", why)
+    }
 }
