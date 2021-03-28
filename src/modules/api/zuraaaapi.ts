@@ -25,7 +25,7 @@ class ZuraaaApi {
   }
 
   async getTopBots (): Promise<Bot[]> {
-    return (await this.api.get('bots?type=top')).data
+    return (await this.api.get('bots?type=top&limit=6')).data
   }
 
   async getUserBots (id: string): Promise<Bot[]> {
