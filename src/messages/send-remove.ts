@@ -87,6 +87,23 @@ export function sendRemove (client: Client, conn: Connection): void {
           }
         }
 
+        client.guilds.fetch(bot.guilds.main.id)
+          .then(guild => {
+            guild.members.fetch(remove.bot._id)
+              .then(member => {
+                member.kick()
+                  .catch(() => {
+                    console.error('Falha ao remover o bot do servidor')
+                  })
+              })
+              .catch(() => {
+                console.error('Falha ao pegar o bot')
+              })
+          })
+          .catch(() => {
+            console.error('Falha ao pegar a guild')
+          })
+
         channel.sendToQueue(msg.properties.replyTo, Buffer.from(JSON.stringify(true)), {
           correlationId: msg?.properties.correlationId
         })
