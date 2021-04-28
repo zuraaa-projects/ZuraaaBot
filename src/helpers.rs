@@ -72,7 +72,7 @@ pub fn get_id_from_mention_or_content(msg: &Message) -> Option<u64> {
     }
 }
 
-pub async fn get_users_tags_from_vec(users: Vec<String>, ctx: &Context) -> Result<Vec<String>, serenity::Error> {
+pub async fn get_users_from_vec(users: Vec<String>, ctx: &Context) -> Result<Vec<User>, serenity::Error> {
     let mut vec_result = Vec::new();
 
     for user_id in users.iter() {
@@ -81,9 +81,8 @@ pub async fn get_users_tags_from_vec(users: Vec<String>, ctx: &Context) -> Resul
         let fetched_user = ctx.http.get_user(id_in_u64)
             .await?;
         
-        vec_result.push(fetched_user.tag());
+        vec_result.push(fetched_user);
     }
 
     Ok(vec_result)
 }
-
