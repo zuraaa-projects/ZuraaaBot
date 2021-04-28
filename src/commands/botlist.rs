@@ -1,6 +1,6 @@
 use serenity::{client::Context, framework::standard::{CommandResult, macros::{command, group}}, model::channel::Message};
 use crate::api::{ZuraaaApi, api_formats::{owners_to_single_vec, format_tags}};
-use crate::helpers::{get_id_from_mention_or_content, base_embed, get_avatar_url, get_users_tags_from_vec};
+use crate::helpers::{get_id_from_mention_or_content, base_embed, get_avatar_url, get_users_from_vec};
 use crate::configs::api_config;
 
 #[group]
@@ -29,12 +29,12 @@ async fn bot(ctx: &Context, msg: &Message) -> CommandResult {
                     embed.thumbnail(get_avatar_url(&user));
 
                     let owners = owners_to_single_vec(&bot_data);
-                    let owners_tags_in_tags = get_users_tags_from_vec(owners, ctx)
+                    let owners_tags_in_tags = get_users_from_vec(owners, ctx)
                         .await?;
                     let owners_formated = owners_tags_in_tags
                         .iter()
                         .fold(String::new(), |act, new| {
-                            format!("{}\n`{}`", act, new)
+                            format!("{}\n[`{}`]({}user/{})", act, new.tag(), api_config::get_site_url(), new.id.0)
                         });
                     embed.field("Dono(s):", owners_formated, true);
                     
