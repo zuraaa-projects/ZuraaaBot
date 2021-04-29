@@ -1,5 +1,7 @@
 use serenity::{builder::CreateEmbed, client::Context, model::{channel::Message, prelude::User}};
 
+use crate::constants::{EMBED_COLOR, ERROR_EMBED, SUCCESS_EMBED};
+
 pub fn get_avatar_url(user: &User) -> String {
     let avatar = user
         .avatar_url()
@@ -11,7 +13,7 @@ pub fn base_embed(msg: &Message) -> CreateEmbed {
     let mut embed = CreateEmbed::default();
     let author = &msg.author;
     let avatar = get_avatar_url(&author);
-    embed.color(16777088);
+    embed.color(EMBED_COLOR);
     embed.footer(|f| f
         .icon_url(avatar)
         .text(author.tag())
@@ -85,4 +87,16 @@ pub async fn get_users_from_vec(users: Vec<String>, ctx: &Context) -> Result<Vec
     }
 
     Ok(vec_result)
+}
+
+pub fn result_embed(embed: &mut CreateEmbed, success: bool, message: &str) {
+    let (emoji, color) = if success {
+        SUCCESS_EMBED
+    } else {
+        ERROR_EMBED
+    };
+    
+    embed
+        .color(color)
+        .title(format!("{} | {}", emoji, message));
 }

@@ -3,6 +3,7 @@ mod events;
 pub mod api;
 pub mod helpers;
 pub mod configs;
+pub mod constants;
 
 use serenity::Client;
 use configs::bot_config;

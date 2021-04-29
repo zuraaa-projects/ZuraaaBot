@@ -1,7 +1,7 @@
 mod botlist;
 mod help;
 
-use serenity::{client::Context, framework::{StandardFramework, standard::{DispatchError, macros::hook}}, model::channel::Message};
+use serenity::{client::Context, framework::{StandardFramework, standard::{CommandResult, macros::hook}}, model::channel::Message};
 use crate::configs::bot_config::get_prefix;
 
 pub fn create_framework() -> StandardFramework {
@@ -12,12 +12,14 @@ pub fn create_framework() -> StandardFramework {
         )
         .group(&botlist::BOTLIST_GROUP)
         .help(&help::HELP)
-        .on_dispatch_error(dispatch_error_hook);
+        .after(after_hook);
 
     framework
 }
 
 #[hook]
-async fn dispatch_error_hook(_: &Context, _msg: &Message, err: DispatchError) {
-    println!("{:?}", &err);
+async fn after_hook(_: &Context, _msg: &Message, command_name: &str, command_result: CommandResult) {
+    if let Err(why) = command_result {
+        println!("Error on command {}: {:?}", command_name, why);
+    }
 }

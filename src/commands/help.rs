@@ -1,4 +1,4 @@
-use serenity::{client::Context, framework::standard::{Args, CommandGroup, CommandResult, HelpOptions, macros::{group, help}}, model::channel::Message};
+use serenity::{client::Context, framework::standard::{Args, CommandGroup, CommandResult, HelpOptions, macros::help}, model::channel::Message};
 
 use crate::{configs::bot_config::get_prefix, helpers::base_embed};
 
