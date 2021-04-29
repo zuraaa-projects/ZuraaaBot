@@ -3,11 +3,12 @@ use crate::api::{ZuraaaApi, api_formats::{owners_to_single_vec, format_tags}};
 use crate::helpers::{get_id_from_mention_or_content, base_embed, get_avatar_url, get_users_from_vec};
 use crate::configs::api_config;
 
-#[group]
+#[group("Bot List")]
 #[commands(bot, userinfo)]
 pub struct BotList;
 
 #[command]
+#[aliases("botinfo")]
 async fn bot(ctx: &Context, msg: &Message) -> CommandResult {
     let id_user = get_id_from_mention_or_content(msg);
 

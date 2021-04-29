@@ -1,4 +1,5 @@
 mod botlist;
+mod help;
 
 use serenity::{client::Context, framework::{StandardFramework, standard::{DispatchError, macros::hook}}, model::channel::Message};
 use crate::configs::bot_config::get_prefix;
@@ -10,6 +11,7 @@ pub fn create_framework() -> StandardFramework {
             .prefix(&prefix[..])
         )
         .group(&botlist::BOTLIST_GROUP)
+        .help(&help::HELP)
         .on_dispatch_error(dispatch_error_hook);
 
     framework
