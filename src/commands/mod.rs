@@ -1,20 +1,29 @@
 mod botlist;
-mod help;
+mod utils;
 
-use serenity::{client::Context, framework::{StandardFramework, standard::{CommandResult, macros::hook}}, model::channel::Message};
+use serenity::{client::Context, framework::{StandardFramework, standard::{CommandGroup, CommandResult, macros::hook}}, model::channel::Message};
 use crate::configs::bot_config::get_prefix;
 
 pub fn create_framework() -> StandardFramework {
     let prefix = get_prefix();
-    let framework = StandardFramework::new()
+    let mut framework = StandardFramework::new()
         .configure(|c| c
             .prefix(&prefix[..])
         )
-        .group(&botlist::BOTLIST_GROUP)
-        .help(&help::HELP)
         .after(after_hook);
+    
+    for group in  get_groups().iter() {
+        framework = framework.group(group);
+    }
 
     framework
+}
+
+pub fn get_groups() -> [&'static CommandGroup; 2] {
+    [
+        &botlist::BOTLIST_GROUP,
+        &utils::UTILS_GROUP
+    ]
 }
 
 #[hook]

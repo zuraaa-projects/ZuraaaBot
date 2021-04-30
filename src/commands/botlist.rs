@@ -9,6 +9,9 @@ pub struct BotList;
 
 #[command]
 #[aliases("botinfo")]
+#[example("@user")]
+#[example("{id}")]
+/// Mostra as informações sobre um bot na Zuraaa! List.
 async fn bot(ctx: &Context, msg: &Message) -> CommandResult {
     let id_user = get_id_from_mention_or_content(msg);
 
@@ -81,6 +84,11 @@ async fn bot(ctx: &Context, msg: &Message) -> CommandResult {
 }
 
 #[command]
+#[aliases("uinfo", "userbots", "user")]
+#[example("")]
+#[example("@user")]
+#[example("{id}")]
+/// Mostra um usuário na Zuraaa! List.
 async fn userinfo(ctx: &Context, msg: &Message, args: Args) -> CommandResult {
     let id_user = get_id_from_mention_or_content(msg);
     let mut embed = base_embed(msg);

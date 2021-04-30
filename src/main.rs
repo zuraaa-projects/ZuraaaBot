@@ -5,6 +5,7 @@ pub mod helpers;
 pub mod configs;
 pub mod constants;
 
+use commands::create_framework;
 use serenity::Client;
 use configs::bot_config;
 
@@ -19,7 +20,7 @@ async fn main() {
     let token = bot_config::get_token();
     
     let mut client = Client::builder(token)
-        .framework(commands::create_framework())
+        .framework(create_framework())
         .event_handler(events::Events)
         .await
         .expect("Problema ao criar o client do Serenity");
