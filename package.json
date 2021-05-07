@@ -33,7 +33,7 @@
         "amqplib": "^0.7.1",
         "axios": "^0.21.1",
         "discord.js": "^12.5.3",
-        "glob": "^7.1.6",
+        "glob": "^7.1.7",
         "lodash": "^4.17.21",
         "moment": "^2.27.0",
         "reflect-metadata": "^0.1.13",
