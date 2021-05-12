@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
+        uses: actions/checkout@v2.3.4
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.1.5
