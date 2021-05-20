@@ -30,7 +30,7 @@
     },
     "homepage": "https://github.com/zuraaa-projects/ZuraaaBot#readme",
     "dependencies": {
-        "amqplib": "^0.7.1",
+        "amqplib": "^0.8.0",
         "axios": "^0.21.1",
         "discord.js": "^12.5.3",
         "glob": "^7.1.7",
